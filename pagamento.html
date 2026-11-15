@@ -146,7 +146,29 @@ h3 { color:#333; margin-bottom:20px; font-size:17px; }
 <a href="index.html" class="voltar">← Voltar para o produto</a>
 
 <script>
-// CARREGA OS DADOS DO CARRINHO VINDO DO INDEX
+// ✅ MESMA LISTA DE PRODUTOS DO SEU INDEX (COPIEI EXATAMENTE O SEU OBJETO products)
+const products = {
+  iphone15: {id:"iphone15",name:"Apple iPhone 15 128GB Azul 6,1\" 48MP iOS 5G",category:"Celulares",price:4299,oldPrice:6499,badge:"Destaque",image:"https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg"},
+  galaxyA55: {id:"galaxyA55",name:"Samsung Galaxy A35 5G 256GB 8GB RAM Azul Claro",category:"Celulares",price:1899,oldPrice:2299,badge:"Oferta",image:"https://imgs.extra.com.br/55065960/1g.jpg?imwidth=500"},
+  notebookLenovo: {id:"notebookLenovo",name:"Notebook Lenovo IdeaPad 1i 15,6” Core i5 82VY000QBR",category:"Informática",price:3299,oldPrice:3799,badge:"Oferta",image:"https://m.magazineluiza.com.br/a-static/420x420/notebook-lenovo-ideapad-1i-intel-core-i5-1235u-8gb-512gb-ssd-windows-home-15-6-82vy000qbr-cloud-grey/lenovooficial/82vy000qbr/9ddbdb746c9bac6c7cb170cb9e662dc8.jpeg"},
+  smartTv: {id:"smartTv",name:"Smart TV LG 49” NanoCell UHD 4K 49SM8000PSA",category:"TV e vídeo",price:2199,oldPrice:2699,badge:"Mais vendido",image:"https://imgs.extra.com.br/50001484/1xg.jpg?imwidth=500"},
+  airFryer: {id:"airFryer",name:"Fritadeira Air Fryer Mondial 5L AFN-50-BI",category:"Eletrodomésticos",price:399,oldPrice:549,badge:"Oferta",image:"https://static1.efacil.com.br/wcsstore/ExtendedSitesCatalogAssetStore/Imagens/1000/2220459_05.jpg"},
+  geladeira: {id:"geladeira",name:"Geladeira Consul Frost Free Duplex Inverter 377L CRM44MB",category:"Eletrodomésticos",price:2899,oldPrice:3399,badge:"Destaque",image:"https://consul.vtexassets.com/arquivos/ids/293299-1440-auto/01_Consul_Geladeira_CRM44MB_Frontal.webp?quality=80&v=639225792475000000"},
+  foneBluetooth: {id:"foneBluetooth",name:"Fone Bluetooth JBL Tune 520BT",category:"Áudio",price:149,oldPrice:219,badge:"Oferta",image:"https://www.jbl.com.br/dw/image/v2/BFND_PRD/on/demandware.static/-/Sites-masterCatalog_Harman/default/dw3a89ddb1/01.JBL_Tune_520BT_ProductImage_Hero_Purple.png?sh=535&sw=535"},
+  smartwatch: {id:"smartwatch",name:"Smartband Samsung Galaxy Fit3 SM‑R390",category:"Casa",price:229,oldPrice:329,badge:"Novidade",image:"https://images.kabum.com.br/produtos/fotos/525867/smartwatch-samsung-galaxy-fit3-53mm-tela-amoled-resistencia-a-agua-grafite-sm-r390nzaazto_1708690548_gg.jpg"},
+  cafeteira: {id:"cafeteira",name:"Cafeteira Elétrica Mondial Dolce Arome 18 Xícaras C‑30‑18X",category:"Casa",price:139,oldPrice:189,badge:"Oferta",image:"https://lojamondial.vtexassets.com/arquivos/ids/161906‑800‑auto?aspect=true&height=auto&v=638887858190670000&width=800"},
+  tabletSamsung: {id:"tabletSamsung",name:"Tablet Samsung Galaxy Tab A9+ Wi‑Fi 64GB (SM‑X210)",category:"Celulares",price:899,oldPrice:1199,badge:"Oferta",image:"https://images.kabum.com.br/produtos/fotos/506098/tablet‑samsung‑galaxy‑tab‑a9‑64gb‑4gb‑ram‑tela‑imersiva‑de‑11‑90hz‑camera‑traseira‑8mp‑wifi‑android‑14‑grafite‑sm‑x210nzaazto_1700495075_gg.jpg"},
+  motoG: {id:"motoG",name:"Smartphone Motorola Moto G75 5G 256GB",category:"Celulares",price:1299,oldPrice:1599,badge:"Novidade",image:"https://brmotorolanew.vtexassets.com/arquivos/ids/171494‑800‑auto?aspect=true&height=800&v=638798019120930000&width=800"},
+  monitor: {id:"monitor",name:"Monitor LG 24” Full HD 24MK400H‑B",category:"Informática",price:699,oldPrice:899,badge:"Oferta",image:"https://www.lg.com/content/dam/channel/wcms/ca_en/images/desktop‑monitors/24mk400h‑b_aus_enci_ca_en_c/gallery/Z01.jpg"},
+  teclado: {id:"teclado",name:"Teclado Redragon Kumara K552 ABNT2 (Outemu Black)",category:"Informática",price:189,oldPrice:259,badge:"Destaque",image:"https://images.kabum.com.br/produtos/fotos/sync_mirakl/161932/Teclado‑Mec‑nico‑Gamer‑Redragon‑Kumara‑Switch‑Outemu‑Black‑LED‑Vermelho‑ABNT2‑K552‑BLACK‑_1645006764_gg.jpg"},
+  videogame: {id:"videogame",name:"Console Sony PlayStation 5 Slim",category:"Games",price:3499,oldPrice:3999,badge:"Destaque",image:"https://store.sony.com.au/dw/image/v2/ABBC_PRD/on/demandware.static/-/Sites‑sony‑master‑catalog/default/dwf11f74b4/images/PLAYSTATION5WSLIM/PLAYSTATION5WSLIM.png"},
+  controle: {id:"controle",name:"Controle sem fio Sony DualSense para PS5",category:"Games",price:349,oldPrice:429,badge:"Oferta",image:"https://gmedia.playstation.com/is/image/SIEPDC/dualsense‑controller‑image‑block‑01‑ps5‑26jun20"},
+  soundbar: {id:"soundbar",name:"Soundbar Sony HT‑S350 2.1 canais com subwoofer sem fio",category:"Áudio",price:599,oldPrice:799,badge:"Oferta",image:"https://www.sony.co.uk/image/40e802acc5d53a5f885f7aac63671031?bgcolor=F6F9FF&fmt=png‑alpha&hei=1050&wid=1578"},
+  microondas: {id:"microondas",name:"Micro‑ondas Electrolux 34L Branco MEO44",category:"Eletrodomésticos",price:649,oldPrice:799,badge:"Oferta",image:"https://electrolux.vtexassets.com/arquivos/ids/213865‑1000‑1000?aspect=true&format=auto&height=1000&v=637719878526500000&width=1000"},
+  lavadora: {id:"lavadora",name:"Máquina de Lavar Consul 12kg CWH12BB",category:"Eletrodomésticos",price:1899,oldPrice:2299,badge:"Destaque",image:"https://consul.vtexassets.com/arquivos/ids/296183‑1440‑auto/01_Consul_Lavadora_CWH12BB_Imagem_Frontal_1‑‑1‑.webp?quality=80&v=639239707853470000"}
+};
+
+// CARREGA O CARRINHO DO LOCALSTORAGE
 const carrinhoSalvo = JSON.parse(localStorage.getItem("carrinhoDados") || "[]");
 const listaResumo = document.getElementById("listaResumo");
 const textoTotal = document.getElementById("textoTotal");
@@ -156,23 +178,31 @@ let totalPedido = 0;
 if(carrinhoSalvo.length === 0){
     listaResumo.innerText = "Carrinho vazio, volte para a loja e adicione produtos.";
 }else{
-    carrinhoSalvo.forEach(item => {
+    carrinhoSalvo.forEach(itemCarrinho => {
+        // ✅ BUSCA O PRODUTO PELO ID (AQUI ERA O ERRO ANTERIOR)
+        const produtoDados = products[itemCarrinho.productId];
+        if(!produtoDados) return;
+
         const divItem = document.createElement("div");
         divItem.className = "item‑resumo";
+
+        const qtd = Number(itemCarrinho.qty || 1);
+        const precoUnitario = Number(produtoDados.price);
+
         divItem.innerHTML = `
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${produtoDados.image}" alt="${produtoDados.name}" onerror="this.src='https://via.placeholder.com/70x70?text=Sem+Foto'">
             <div class="resumo‑info">
-                <b>${item.name}</b><br>
-                Qtd: ${item.qty} | Unitário: R$ ${Number(item.price).toFixed(2)}
+                <b>${produtoDados.name}</b><br>
+                Qtd: ${qtd} | Unitário: R$ ${precoUnitario.toFixed(2)}
             </div>
         `;
         listaResumo.appendChild(divItem);
-        totalPedido = totalPedido + (Number(item.price) * Number(item.qty));
+        totalPedido = totalPedido + (precoUnitario * qtd);
     })
 }
 textoTotal.innerText = `Total: R$ ${totalPedido.toFixed(2)}`;
 
-// PREENCHE AS PARCELAS AUTOMATICAMENTE
+// PREENCHE AS PARCELAS
 const parcelasOpcoes = [1,2,3,6,12];
 selectParcelas.innerHTML = "";
 parcelasOpcoes.forEach(p => {
