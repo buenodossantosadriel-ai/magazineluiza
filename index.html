@@ -121,6 +121,12 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 .gallery-review-summary{display:flex;align-items:center;gap:9px;margin:8px 0;color:#777;font-size:13px}
 .gallery-stars{color:#e6a400;letter-spacing:2px;font-size:18px}
 .gallery-no-reviews{background:#f7f8fa;border-radius:8px;padding:12px;color:#666;font-size:13px}
+.demo-review-notice{background:#fff4d6;border:1px solid #efd58a;border-radius:8px;padding:10px;color:#6b4b00;font-size:12px;font-weight:700;margin-bottom:10px}
+.demo-review{background:#f7f8fa;border-radius:8px;padding:11px;margin:8px 0;font-size:13px}
+.demo-review strong{display:block;color:#333}
+.demo-review-stars{display:block;color:#d99a00;letter-spacing:2px;margin:4px 0}
+.demo-review p{margin:5px 0;color:#555}
+.demo-review small{color:#888;font-size:11px}
 .gallery-counter{position:absolute;bottom:10px;right:12px;background:#222b;color:#fff;border-radius:20px;padding:4px 9px;font-size:12px}
 @media(max-width:700px){.gallery-backdrop{padding:8px;align-items:flex-start}.gallery-modal{max-height:none;margin:8px 0}.gallery-layout{grid-template-columns:1fr;gap:10px;padding:16px}.gallery-main{height:300px}.gallery-info h2{font-size:20px}.gallery-close{right:9px;top:9px}}
 
@@ -260,10 +266,10 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 <script>
 const products = {
   iphone15: {id:"iphone15",name:"Apple iPhone 15 128GB Azul 6,1\" 48MP iOS 5G",category:"Celulares",price:4299,oldPrice:6499,badge:"Destaque",image:"https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg"},
-  galaxyA55: {id:"galaxyA55",name:"Samsung Galaxy A55 5G 256GB",category:"Celulares",price:1899,oldPrice:2299,badge:"Oferta",image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"},
-  notebookLenovo: {id:"notebookLenovo",name:"Notebook Lenovo IdeaPad 1i Intel Core i5",category:"Informática",price:3299,oldPrice:3799,badge:"Oferta",image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"},
-  smartTv: {id:"smartTv",name:"Smart TV 50 polegadas 4K UHD",category:"TV e vídeo",price:2199,oldPrice:2699,badge:"Mais vendido",image:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80"},
-  airFryer: {id:"airFryer",name:"Fritadeira Air Fryer 5 litros",category:"Eletrodomésticos",price:399,oldPrice:549,badge:"Oferta",image:"https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=600&q=80"},
+  galaxyA55: {id:"galaxyA55",name:"Samsung Galaxy A55 5G 256GB 8GB RAM",category:"Celulares",price:1899,oldPrice:2299,badge:"Oferta",image:"https://samsungbrshop.vtexassets.com/arquivos/ids/230053-800-auto?v=638448364045470000",images:["https://samsungbrshop.vtexassets.com/arquivos/ids/230053-800-auto?v=638448364045470000","https://cdn.cimri.io/image/1000x1000/samsung-galaxy-a55-256gb-8gb-ram-siyah_872409907.jpg"]},
+  notebookLenovo: {id:"notebookLenovo",name:"Notebook Lenovo IdeaPad 1i 15,6” Core i5 82VY000QBR",category:"Informática",price:3299,oldPrice:3799,badge:"Oferta",image:"https://www.melhorcomprar.com.br/images/produto/565982-1.webp"},
+  smartTv: {id:"smartTv",name:"Smart TV Samsung 50” Crystal UHD 4K U8000F",category:"TV e vídeo",price:2199,oldPrice:2699,badge:"Mais vendido",image:"https://cdn.bdstall.com/product-image/giant_387012.jpg"},
+  airFryer: {id:"airFryer",name:"Fritadeira Air Fryer Mondial 5L AFN-50-BI",category:"Eletrodomésticos",price:399,oldPrice:549,badge:"Oferta",image:"https://static1.efacil.com.br/wcsstore/ExtendedSitesCatalogAssetStore/Imagens/1000/2220459_05.jpg"},
   geladeira: {id:"geladeira",name:"Geladeira Frost Free Duplex  duas portas",category:"Eletrodomésticos",price:2899,oldPrice:3399,badge:"Destaque",image:"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=600&q=80"},
   foneBluetooth: {id:"foneBluetooth",name:"Fone de ouvido Bluetooth sem fio",category:"Áudio",price:149,oldPrice:219,badge:"Oferta",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"},
   smartwatch: {id:"smartwatch",name:"Smartwatch com monitoramento e Bluetooth",category:"Casa",price:229,oldPrice:329,badge:"Novidade",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"},
@@ -272,7 +278,7 @@ const products = {
   motoG: {id:"motoG",name:"Smartphone Motorola Moto G 5G 256GB",category:"Celulares",price:1299,oldPrice:1599,badge:"Novidade",image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"},
   monitor: {id:"monitor",name:"Monitor LED 24 polegadas Full HD",category:"Informática",price:699,oldPrice:899,badge:"Oferta",image:"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"},
   teclado: {id:"teclado",name:"Teclado mecânico para computador",category:"Informática",price:189,oldPrice:259,badge:"Destaque",image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"},
-  videogame: {id:"videogame",name:"Console de videogame geração atual",category:"Games",price:3499,oldPrice:3999,badge:"Destaque",image:"https://images.unsplash.com/photo-1486401899868-0e435ed85128?auto=format&fit=crop&w=600&q=80"},
+  videogame: {id:"videogame",name:"Console Sony PlayStation 5 Slim",category:"Games",price:3499,oldPrice:3999,badge:"Destaque",image:"https://media.gq.com.mx/photos/6526e7c3fe74e8260fb66733/16%3A9/w_2560%2Cc_limit/PlayStation_5_Slim.jpg"},
   controle: {id:"controle",name:"Controle sem fio para videogame",category:"Games",price:349,oldPrice:429,badge:"Oferta",image:"https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80"},
   soundbar: {id:"soundbar",name:"Soundbar Bluetooth com subwoofer",category:"Áudio",price:599,oldPrice:799,badge:"Oferta",image:"https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80"},
   microondas: {id:"microondas",name:"Forno micro-ondas  semanais 30 litros",category:"Eletrodomésticos",price:649,oldPrice:799,badge:"Oferta",image:"https://images.unsplash.com/photo-1585659722983-3a675dabf23d?auto=format&fit=crop&w=600&q=80"},
@@ -349,8 +355,11 @@ function openGallery(id) {
   document.getElementById("galleryTitle").textContent = p.name;
   document.getElementById("galleryOldPrice").textContent = "De " + money(p.oldPrice);
   document.getElementById("galleryPrice").textContent = money(p.price);
-  document.getElementById("galleryRatingText").textContent = "Ainda sem avaliações";
-  document.getElementById("galleryReviews").textContent = "Ainda não há avaliações verificadas para este produto. Os comentários serão exibidos aqui quando houver avaliações reais de clientes.";
+  document.getElementById("galleryRatingText").textContent = "Exemplos fictícios — sem nota real";
+  document.getElementById("galleryReviews").innerHTML =
+    '<div class="demo-review-notice">ATENÇÃO: avaliações fictícias para demonstração do layout. Não são opiniões reais, compras verificadas ou notas de clientes.</div>' +
+    '<article class="demo-review"><strong>Cliente demonstrativo 01</strong><span class="demo-review-stars">★★★★★</span><p>Exemplo de comentário: produto com visual bonito e apresentação interessante.</p><small>Conteúdo fictício • não representa uma compra real</small></article>' +
+    '<article class="demo-review"><strong>Cliente demonstrativo 02</strong><span class="demo-review-stars">★★★★☆</span><p>Exemplo de comentário: descrição clara e informações fáceis de consultar.</p><small>Conteúdo fictício • não representa uma compra real</small></article>';
   document.getElementById("galleryBackdrop").classList.add("open");
   document.body.style.overflow = "hidden";
   renderGalleryImage();
