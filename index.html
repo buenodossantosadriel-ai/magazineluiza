@@ -131,31 +131,20 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 
   <section id="produtos">
     <div class="section-head">
-      <div><h2>Produtos em destaque</h2><p>Encontre o que você procura</p></div>
+      <div><h2>Produtos em destaque</h2><p>Explore várias categorias • preços demonstrativos</p></div>
       <p id="resultCount" aria-live="polite">1 produto</p>
     </div>
     <div class="filters" aria-label="Filtrar produtos">
       <button class="filter-btn active" data-filter="Todos">Todos</button>
       <button class="filter-btn" data-filter="Celulares">Celulares</button>
+      <button class="filter-btn" data-filter="Informática">Informática</button>
+      <button class="filter-btn" data-filter="TV e vídeo">TV e vídeo</button>
+      <button class="filter-btn" data-filter="Eletrodomésticos">Eletrodomésticos</button>
+      <button class="filter-btn" data-filter="Casa">Casa</button>
+      <button class="filter-btn" data-filter="Áudio">Áudio</button>
       <button class="filter-btn" data-filter="Ofertas">Ofertas</button>
     </div>
-    <div class="product-grid" id="productGrid">
-      <article class="product-card" data-id="iphone15" data-name="Apple iPhone 15 128GB Azul" data-category="Celulares" data-price="4299">
-        <div class="product-image">
-          <span class="tag">Destaque</span>
-          <img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg" alt="Apple iPhone 15 128GB azul">
-        </div>
-        <h3>Apple iPhone 15 128GB Azul 6,1&quot; 48MP iOS 5G</h3>
-        <div class="rating" aria-label="Avaliações ainda não disponíveis">☆☆☆☆☆ <span>Sem avaliações</span></div>
-        <div class="old-price">De R$ 6.499,00</div>
-        <div class="price">R$ 4.299,00</div>
-        <div class="price-note">Preço anunciado no Pix</div>
-        <div class="card-actions">
-          <button class="add-btn" type="button" data-add="iphone15">Adicionar à sacola</button>
-          <button class="favorite" type="button" aria-label="Adicionar aos favoritos" data-favorite="iphone15">♡</button>
-        </div>
-      </article>
-    </div>
+    <div class="product-grid" id="productGrid"></div>
     <div class="empty-state" id="emptyState">Nenhum produto encontrado. Tente outra busca ou categoria.</div>
   </section>
 
@@ -172,7 +161,7 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 </main>
 <footer class="footer">
   <strong>Magazine Luiza</strong>
-  <small>Projeto independente de demonstração, sem vínculo ou afiliação com Magazine Luiza / Magalu. Preços, disponibilidade, entrega e condições devem ser confirmados antes de qualquer compra.</small>
+  <small>Projeto independente de demonstração, sem vínculo ou afiliação com Magazine Luiza / Magalu. Os produtos e preços desta vitrine são demonstrativos e não representam oferta oficial. Disponibilidade, entrega e condições devem ser confirmadas antes de qualquer compra.</small>
 </footer>
 
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
@@ -189,13 +178,35 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 
 <script>
 const products = {
-  iphone15: {
-    id: "iphone15",
-    name: "Apple iPhone 15 128GB Azul 6,1\" 48MP iOS 5G",
-    price: 4299,
-    image: "https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg"
-  }
+  iphone15: {id:"iphone15",name:"Apple iPhone 15 128GB Azul 6,1\\" 48MP iOS 5G",category:"Celulares",price:4299,oldPrice:6499,badge:"Destaque",image:"https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg"},
+  galaxyA55: {id:"galaxyA55",name:"Samsung Galaxy A55 5G 256GB",category:"Celulares",price:1899,oldPrice:2299,badge:"Oferta",image:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80"},
+  notebookLenovo: {id:"notebookLenovo",name:"Notebook Lenovo IdeaPad 1i Intel Core i5",category:"Informática",price:3299,oldPrice:3799,badge:"Oferta",image:"https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=600&q=80"},
+  smartTv: {id:"smartTv",name:"Smart TV 50 polegadas 4K UHD",category:"TV e vídeo",price:2199,oldPrice:2699,badge:"Mais vendido",image:"https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&w=600&q=80"},
+  airFryer: {id:"airFryer",name:"Fritadeira Air Fryer 5 litros",category:"Eletrodomésticos",price:399,oldPrice:549,badge:"Oferta",image:"https://images.unsplash.com/photo-1585515320310-259814833e62?auto=format&fit=crop&w=600&q=80"},
+  geladeira: {id:"geladeira",name:"Geladeira Frost Free Duplex  duas portas",category:"Eletrodomésticos",price:2899,oldPrice:3399,badge:"Destaque",image:"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=600&q=80"},
+  foneBluetooth: {id:"foneBluetooth",name:"Fone de ouvido Bluetooth sem fio",category:"Áudio",price:149,oldPrice:219,badge:"Oferta",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"},
+  smartwatch: {id:"smartwatch",name:"Smartwatch com monitoramento e Bluetooth",category:"Casa",price:229,oldPrice:329,badge:"Novidade",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"},
+  cafeteira: {id:"cafeteira",name:"Cafeteira elétrica para café coado",category:"Casa",price:139,oldPrice:189,badge:"Oferta",image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"}
 };
+function renderProducts() {
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = Object.values(products).map(p => `
+    <article class="product-card" data-id="${p.id}" data-name="${p.name.toLowerCase()}" data-category="${p.category}">
+      <div class="product-image">
+        <span class="tag">${p.badge}</span>
+        <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span style=&quot;font-size:48px&quot;>📦</span>')">
+      </div>
+      <h3>${p.name}</h3>
+      <div class="rating" aria-label="Avaliações ainda não disponíveis">☆☆☆☆☆ <span>Sem avaliações</span></div>
+      <div class="old-price">De ${money(p.oldPrice)}</div>
+      <div class="price">${money(p.price)}</div>
+      <div class="price-note">Preço ilustrativo • confirme condições</div>
+      <div class="card-actions">
+        <button class="add-btn" type="button" data-add="${p.id}">Adicionar à sacola</button>
+        <button class="favorite" type="button" aria-label="Adicionar aos favoritos" data-favorite="${p.id}">♡</button>
+      </div>
+    </article>`).join("");
+}
 let cart = {};
 let activeFilter = "Todos";
 let searchTerm = "";
@@ -253,7 +264,7 @@ function applyFilters() {
   const cards = [...document.querySelectorAll(".product-card")];
   let visible = 0;
   cards.forEach(card => {
-    const matchesCategory = activeFilter === "Todos" || activeFilter === "Ofertas" || card.dataset.category === activeFilter;
+    const matchesCategory = activeFilter === "Todos" || (activeFilter === "Ofertas" ? products[card.dataset.id].badge === "Oferta" : card.dataset.category === activeFilter);
     const matchesSearch = card.dataset.name.toLowerCase().includes(searchTerm);
     const show = matchesCategory && matchesSearch;
     card.style.display = show ? "" : "none";
@@ -308,6 +319,7 @@ document.querySelectorAll(".departments [data-category]").forEach(link => {
     applyFilters();
   });
 });
+renderProducts();
 renderCart();
 </script>
 </body>
