@@ -492,8 +492,10 @@ document.addEventListener("keydown", event => {
 document.getElementById("openCart").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
+// LINHA CORRIGIDA AQUI
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-    localStorage.setItem("carrinhoDados", JSON.stringify(cart));
+    const cartArray = Object.values(cart);
+    localStorage.setItem("carrinhoDados", JSON.stringify(cartArray));
     location.href = "pagamento.html";
 });
 
