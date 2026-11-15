@@ -1,152 +1,314 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apple iPhone 15 128GB Azul 6,1" 48MP iOS 5G - Magazine Luiza</title>
-<meta name="description" content="Apple iPhone 15 128GB Azul 6,1'' 48MP iOS 5G com as melhores condições você encontra no Magalu. Confira!">
-<link href="https://site-content.magazineluiza.com.br/static/img/default/favicon-cc4cf323.png" rel="shortcut icon" type="image/png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0086ff">
+<title>Magazine Luiza | Ofertas e produtos</title>
+<meta name="description" content="Confira produtos, ofertas e novidades na vitrine Magazine Luiza.">
+<link rel="icon" href="https://site-content.magazineluiza.com.br/static/img/default/favicon-cc4cf323.png" type="image/png">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: Arial, sans-serif; background:#f5f5f5; }
-
-/* === CABEÇALHO ROTATIVO === */
-#header {
-  background: #0086ff;
-  padding: 8px 12px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  height: 110px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.slider-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.slider-item {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  transition: opacity 0.6s ease-in-out;
-  max-height: 95px;
-  max-width: 90%;
-  object-fit: contain;
-}
-
-.slider-item.ativo {
-  opacity: 1;
-}
-/* === FIM DO CABEÇALHO === */
-
-#product { display:block; max-width:1368px; margin:auto; background:white; }
-.galeria {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 20px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-}
-.galeria::-webkit-scrollbar { display: none; }
-.galeria img {
-  min-width: 85%;
-  max-width: 320px;
-  border-radius: 12px;
-  scroll-snap-align: center;
-  border: 1px solid #eee;
-  background: white;
-  object-fit: contain;
-  height: 320px;
-}
-.conteudo { padding:20px; }
-.preco { color:#0086ff; font-size:28px; font-weight:bold; }
-.preco-antigo { color:#999; text-decoration:line-through; font-size:14px; }
-button { border:none; border-radius:8px; font-size:18px; font-weight:bold; margin-top:15px; cursor:pointer; transition: all 0.2s ease; }
-button:hover { opacity: 0.9; transform: scale(1.01); }
-.botao-magalu { background:#0086ff; color:white; width:100%; padding:18px; }
-.botao-whats { background:#00a650; color:white; width:100%; padding:18px; margin-top:10px; }
-.lista { background:#f7f7f7; padding:15px; border-radius:10px; margin-top:15px; font-size:14px; line-height:1.7; }
+:root{--blue:#0086ff;--blue-dark:#006bd6;--yellow:#ffdf00;--ink:#222;--muted:#666;--bg:#f4f5f7;--green:#00a650}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+button,input{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+.top-strip{background:#006bd6;color:#fff;text-align:center;padding:7px 12px;font-size:12px}
+.site-header{background:var(--blue);color:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 8px #0002}
+.header-main{max-width:1200px;margin:auto;padding:14px 18px;display:grid;grid-template-columns:auto minmax(180px,1fr) auto;align-items:center;gap:22px}
+.brand{font-size:25px;font-weight:900;letter-spacing:-1.2px;white-space:nowrap}
+.brand span{color:var(--yellow)}
+.search{display:flex;background:#fff;border-radius:8px;overflow:hidden;height:44px}
+.search input{border:0;outline:0;padding:0 14px;min-width:0;flex:1;color:#222}
+.search button{border:0;background:var(--yellow);padding:0 17px;font-weight:800;color:#222}
+.header-actions{display:flex;align-items:center;gap:16px;font-size:13px;font-weight:bold}
+.header-actions button{background:transparent;border:0;color:#fff;font-weight:bold}
+.cart-trigger{display:flex;align-items:center;gap:7px;white-space:nowrap}
+.cart-count{background:var(--yellow);color:#222;border-radius:20px;padding:2px 7px}
+.departments{background:#fff;color:#333;border-bottom:1px solid #e7e7e7}
+.departments nav{max-width:1200px;margin:auto;padding:11px 18px;display:flex;gap:24px;overflow:auto;white-space:nowrap;font-size:13px}
+.departments a:hover{color:var(--blue)}
+main{max-width:1200px;margin:20px auto;padding:0 16px}
+.hero{background:linear-gradient(110deg,#006bd6,#0086ff 65%,#42a5ff);border-radius:14px;color:#fff;padding:34px 38px;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:210px;overflow:hidden}
+.hero small{font-weight:bold;color:var(--yellow);text-transform:uppercase;letter-spacing:1px}
+.hero h1{font-size:clamp(25px,4vw,40px);line-height:1.08;margin:8px 0}
+.hero p{max-width:520px;font-size:15px}
+.hero-mark{font-size:100px;line-height:1;filter:drop-shadow(0 8px 10px #003c8055)}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 2px 14px}
+.section-head h2{font-size:22px}
+.section-head p{font-size:13px;color:var(--muted)}
+.filters{display:flex;gap:8px;overflow:auto;padding:2px 0 14px}
+.filter-btn{border:1px solid #ddd;background:#fff;border-radius:20px;padding:8px 15px;font-size:13px;white-space:nowrap}
+.filter-btn.active,.filter-btn:hover{background:var(--blue);border-color:var(--blue);color:#fff}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.product-card{background:#fff;border:1px solid #e9e9e9;border-radius:12px;padding:14px;display:flex;flex-direction:column;min-width:0;transition:transform .18s,box-shadow .18s}
+.product-card:hover{transform:translateY(-3px);box-shadow:0 8px 22px #00000012}
+.product-image{height:190px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:8px;margin-bottom:12px;position:relative}
+.product-image img{max-width:100%;max-height:100%;object-fit:contain}
+.tag{position:absolute;top:8px;left:8px;background:#e8f3ff;color:#006bd6;border-radius:4px;padding:4px 7px;font-size:10px;font-weight:bold}
+.product-card h3{font-size:14px;line-height:1.35;min-height:38px;margin-bottom:7px}
+.rating{color:#e6a400;font-size:13px;margin-bottom:8px}
+.rating span{color:#777}
+.old-price{color:#888;text-decoration:line-through;font-size:12px}
+.price{font-size:22px;color:#0086ff;font-weight:800}
+.price-note{font-size:12px;color:#555;margin-top:2px}
+.card-actions{display:flex;gap:8px;margin-top:auto;padding-top:12px}
+.add-btn{flex:1;background:var(--blue);color:#fff;border:0;border-radius:7px;padding:10px 8px;font-weight:bold;font-size:13px}
+.add-btn:hover{background:var(--blue-dark)}
+.favorite{width:40px;border:1px solid #ddd;background:#fff;border-radius:7px;font-size:19px;color:#777}
+.favorite.active{color:#e53958;border-color:#e53958}
+.info-band{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:26px 0}
+.info-item{background:#fff;border-radius:10px;padding:17px;display:flex;gap:12px;align-items:center}
+.info-icon{font-size:25px}
+.info-item b{display:block;font-size:13px}
+.info-item span{font-size:12px;color:#777}
+.empty-state{display:none;background:#fff;padding:30px;text-align:center;border-radius:10px;color:#666}
+.review-box{background:#fff;border-radius:12px;padding:20px;margin:26px 0}
+.review-box h2{font-size:19px;margin-bottom:6px}
+.review-box p{font-size:13px;color:#666}
+.footer{background:#075db5;color:#fff;margin-top:35px;padding:25px 16px;text-align:center}
+.footer small{display:block;max-width:850px;margin:8px auto 0;line-height:1.5;color:#e4efff}
+.drawer-backdrop{position:fixed;inset:0;background:#0007;z-index:40;display:none}
+.drawer{position:fixed;right:0;top:0;height:100%;width:min(420px,100%);background:#fff;z-index:41;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-8px 0 30px #0002}
+.drawer.open{transform:translateX(0)}
+.drawer-backdrop.open{display:block}
+.drawer-head{padding:18px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.drawer-head h2{font-size:19px}
+.close-btn{border:0;background:#eee;border-radius:50%;width:34px;height:34px;font-size:20px}
+.cart-items{padding:16px;overflow:auto;flex:1}
+.cart-line{display:grid;grid-template-columns:64px 1fr auto;gap:10px;padding:12px 0;border-bottom:1px solid #eee;align-items:center}
+.cart-line img{width:64px;height:64px;object-fit:contain}
+.cart-line b{font-size:13px;display:block}
+.cart-line small{color:#666}
+.qty{display:flex;align-items:center;gap:8px;margin-top:7px}
+.qty button{border:1px solid #ddd;background:#fff;border-radius:5px;width:25px;height:25px}
+.remove{border:0;background:none;color:#c33;font-size:12px;margin-top:4px}
+.cart-total{border-top:1px solid #eee;padding:18px}
+.total-row{display:flex;justify-content:space-between;font-weight:bold;font-size:18px}
+.checkout-btn{width:100%;border:0;border-radius:8px;background:var(--green);color:#fff;font-weight:bold;padding:14px;margin-top:14px}
+.checkout-note{font-size:11px;color:#777;margin-top:8px;text-align:center}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);background:#222;color:#fff;padding:11px 18px;border-radius:8px;font-size:13px;opacity:0;pointer-events:none;transition:.2s;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:850px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.header-main{grid-template-columns:1fr auto;gap:12px}.search{grid-column:1/-1;grid-row:2}.brand{font-size:23px}.hero{min-height:180px}.hero-mark{font-size:75px}}
+@media(max-width:480px){.top-strip{font-size:11px}.header-main{padding:11px 12px}.header-actions{gap:10px}.header-actions .account-label{display:none}.departments nav{gap:18px;padding:10px 13px}main{padding:0 11px;margin-top:12px}.hero{padding:24px 20px;min-height:165px}.hero p{font-size:13px}.hero-mark{font-size:58px}.section-head h2{font-size:19px}.section-head p{font-size:11px}.product-grid{gap:9px}.product-card{padding:10px}.product-image{height:145px}.product-card h3{font-size:12px;min-height:48px}.price{font-size:19px}.add-btn{font-size:12px;padding:9px 5px}.favorite{width:34px}.info-band{grid-template-columns:1fr;gap:8px}.info-item{padding:12px}}
 </style>
 </head>
 <body>
-
-<!-- === CABEÇALHO ROTATIVO === -->
-<div id="header">
-  <div class="slider-container">
-    <img class="slider-item ativo" src="https://pbs.twimg.com/profile_banners/43943121/1785555876" alt="Banner Magalu">
-    <img class="slider-item" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Magalu_-_novo_logo.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=original" alt="Logo Magalu">
+<div class="top-strip">Ofertas e novidades em um só lugar • Consulte condições antes de comprar</div>
+<header class="site-header">
+  <div class="header-main">
+    <a class="brand" href="#" aria-label="Magazine Luiza início">magazine <span>luiza</span></a>
+    <form class="search" id="searchForm" role="search">
+      <input id="searchInput" type="search" placeholder="Buscar produtos" aria-label="Buscar produtos">
+      <button type="submit" aria-label="Pesquisar">⌕ Buscar</button>
+    </form>
+    <div class="header-actions">
+      <span class="account-label">Olá! Bem-vindo</span>
+      <button class="cart-trigger" id="openCart" type="button" aria-label="Abrir carrinho">🛒 Sacola <span class="cart-count" id="cartCount">0</span></button>
+    </div>
   </div>
+</header>
+<div class="departments">
+  <nav aria-label="Departamentos">
+    <a href="#produtos" data-category="Todos">Todos os produtos</a>
+    <a href="#produtos" data-category="Celulares">Celulares</a>
+    <a href="#produtos" data-category="Informática">Informática</a>
+    <a href="#produtos" data-category="TV e vídeo">TV e vídeo</a>
+    <a href="#produtos" data-category="Eletrodomésticos">Eletrodomésticos</a>
+    <a href="#produtos" data-category="Ofertas">Ofertas</a>
+  </nav>
 </div>
+<main>
+  <section class="hero" aria-label="Destaque">
+    <div>
+      <small>Vitrine de produtos</small>
+      <h1>Boas compras<br>começam aqui.</h1>
+      <p>Explore nossa seleção de produtos e adicione seus favoritos à sacola.</p>
+    </div>
+    <div class="hero-mark" aria-hidden="true">🛍️</div>
+  </section>
+
+  <section id="produtos">
+    <div class="section-head">
+      <div><h2>Produtos em destaque</h2><p>Encontre o que você procura</p></div>
+      <p id="resultCount" aria-live="polite">1 produto</p>
+    </div>
+    <div class="filters" aria-label="Filtrar produtos">
+      <button class="filter-btn active" data-filter="Todos">Todos</button>
+      <button class="filter-btn" data-filter="Celulares">Celulares</button>
+      <button class="filter-btn" data-filter="Ofertas">Ofertas</button>
+    </div>
+    <div class="product-grid" id="productGrid">
+      <article class="product-card" data-id="iphone15" data-name="Apple iPhone 15 128GB Azul" data-category="Celulares" data-price="4299">
+        <div class="product-image">
+          <span class="tag">Destaque</span>
+          <img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg" alt="Apple iPhone 15 128GB azul">
+        </div>
+        <h3>Apple iPhone 15 128GB Azul 6,1&quot; 48MP iOS 5G</h3>
+        <div class="rating" aria-label="Avaliações ainda não disponíveis">☆☆☆☆☆ <span>Sem avaliações</span></div>
+        <div class="old-price">De R$ 6.499,00</div>
+        <div class="price">R$ 4.299,00</div>
+        <div class="price-note">Preço anunciado no Pix</div>
+        <div class="card-actions">
+          <button class="add-btn" type="button" data-add="iphone15">Adicionar à sacola</button>
+          <button class="favorite" type="button" aria-label="Adicionar aos favoritos" data-favorite="iphone15">♡</button>
+        </div>
+      </article>
+    </div>
+    <div class="empty-state" id="emptyState">Nenhum produto encontrado. Tente outra busca ou categoria.</div>
+  </section>
+
+  <section class="info-band" aria-label="Informações">
+    <div class="info-item"><div class="info-icon">🔒</div><div><b>Compra consciente</b><span>Confira os detalhes antes de finalizar.</span></div></div>
+    <div class="info-item"><div class="info-icon">📦</div><div><b>Informações do produto</b><span>Consulte disponibilidade e entrega.</span></div></div>
+    <div class="info-item"><div class="info-icon">💬</div><div><b>Atendimento</b><span>Em breve, novos canais de suporte.</span></div></div>
+  </section>
+
+  <section class="review-box">
+    <h2>Avaliações dos produtos</h2>
+    <p>As avaliações serão disponibilizadas quando o sistema de clientes e pedidos estiver integrado. Não exibimos comentários fictícios.</p>
+  </section>
+</main>
+<footer class="footer">
+  <strong>Magazine Luiza</strong>
+  <small>Projeto independente de demonstração, sem vínculo ou afiliação com Magazine Luiza / Magalu. Preços, disponibilidade, entrega e condições devem ser confirmados antes de qualquer compra.</small>
+</footer>
+
+<div class="drawer-backdrop" id="drawerBackdrop"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Sua sacola" aria-hidden="true">
+  <div class="drawer-head"><h2>Minha sacola</h2><button class="close-btn" id="closeCart" type="button" aria-label="Fechar sacola">×</button></div>
+  <div class="cart-items" id="cartItems"><p style="color:#777;text-align:center;padding:30px 8px">Sua sacola está vazia.</p></div>
+  <div class="cart-total">
+    <div class="total-row"><span>Subtotal</span><span id="cartTotal">R$ 0,00</span></div>
+    <button class="checkout-btn" id="checkoutBtn" type="button">Continuar</button>
+    <p class="checkout-note">Finalização de compra ficará disponível após a integração de um gateway de pagamento seguro.</p>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
-const itens = document.querySelectorAll('.slider-item');
-let indice = 0;
+const products = {
+  iphone15: {
+    id: "iphone15",
+    name: "Apple iPhone 15 128GB Azul 6,1\" 48MP iOS 5G",
+    price: 4299,
+    image: "https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg"
+  }
+};
+let cart = {};
+let activeFilter = "Todos";
+let searchTerm = "";
 
-function trocarSlide() {
-  itens[indice].classList.remove('ativo');
-  indice = (indice + 1) % itens.length;
-  itens[indice].classList.add('ativo');
+const money = value => value.toLocaleString("pt-BR", {style:"currency",currency:"BRL"});
+const cartDrawer = document.getElementById("cartDrawer");
+const backdrop = document.getElementById("drawerBackdrop");
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove("show"), 2200);
 }
-
-setInterval(trocarSlide, 3000);
+function openCart() {
+  cartDrawer.classList.add("open");
+  backdrop.classList.add("open");
+  cartDrawer.setAttribute("aria-hidden","false");
+}
+function closeCart() {
+  cartDrawer.classList.remove("open");
+  backdrop.classList.remove("open");
+  cartDrawer.setAttribute("aria-hidden","true");
+}
+function addToCart(id) {
+  if (!products[id]) return;
+  cart[id] = (cart[id] || 0) + 1;
+  renderCart();
+  showToast("Produto adicionado à sacola.");
+}
+function changeQuantity(id, amount) {
+  if (!cart[id]) return;
+  cart[id] += amount;
+  if (cart[id] <= 0) delete cart[id];
+  renderCart();
+}
+function renderCart() {
+  const ids = Object.keys(cart);
+  const count = ids.reduce((sum,id) => sum + cart[id], 0);
+  const total = ids.reduce((sum,id) => sum + products[id].price * cart[id], 0);
+  document.getElementById("cartCount").textContent = count;
+  document.getElementById("cartTotal").textContent = money(total);
+  const area = document.getElementById("cartItems");
+  if (!ids.length) {
+    area.innerHTML = '<p style="color:#777;text-align:center;padding:30px 8px">Sua sacola está vazia.</p>';
+    return;
+  }
+  area.innerHTML = ids.map(id => {
+    const p = products[id];
+    return '<div class="cart-line"><img src="' + p.image + '" alt=""><div><b>' + p.name + '</b><small>' + money(p.price) + '</small><div class="qty"><button type="button" data-minus="' + id + '" aria-label="Diminuir quantidade">−</button><span>' + cart[id] + '</span><button type="button" data-plus="' + id + '" aria-label="Aumentar quantidade">+</button></div><button class="remove" type="button" data-remove="' + id + '">Remover</button></div><strong>' + money(p.price * cart[id]) + '</strong></div>';
+  }).join("");
+}
+function applyFilters() {
+  const cards = [...document.querySelectorAll(".product-card")];
+  let visible = 0;
+  cards.forEach(card => {
+    const matchesCategory = activeFilter === "Todos" || activeFilter === "Ofertas" || card.dataset.category === activeFilter;
+    const matchesSearch = card.dataset.name.toLowerCase().includes(searchTerm);
+    const show = matchesCategory && matchesSearch;
+    card.style.display = show ? "" : "none";
+    if (show) visible++;
+  });
+  document.getElementById("emptyState").style.display = visible ? "none" : "block";
+  document.getElementById("resultCount").textContent = visible + (visible === 1 ? " produto" : " produtos");
+}
+document.getElementById("productGrid").addEventListener("click", event => {
+  const add = event.target.closest("[data-add]");
+  const favorite = event.target.closest("[data-favorite]");
+  if (add) addToCart(add.dataset.add);
+  if (favorite) {
+    favorite.classList.toggle("active");
+    favorite.textContent = favorite.classList.contains("active") ? "♥" : "♡";
+    showToast(favorite.classList.contains("active") ? "Adicionado aos favoritos." : "Removido dos favoritos.");
+  }
+});
+document.getElementById("cartItems").addEventListener("click", event => {
+  const plus = event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+  const remove = event.target.closest("[data-remove]");
+  if (plus) changeQuantity(plus.dataset.plus, 1);
+  if (minus) changeQuantity(minus.dataset.minus, -1);
+  if (remove) { delete cart[remove.dataset.remove]; renderCart(); }
+});
+document.getElementById("openCart").addEventListener("click", openCart);
+document.getElementById("closeCart").addEventListener("click", closeCart);
+backdrop.addEventListener("click", closeCart);
+document.getElementById("checkoutBtn").addEventListener("click", () => showToast("Checkout será ativado após a integração do pagamento seguro."));
+document.getElementById("searchForm").addEventListener("submit", event => {
+  event.preventDefault();
+  searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+  applyFilters();
+  document.getElementById("produtos").scrollIntoView({behavior:"smooth"});
+});
+document.getElementById("searchInput").addEventListener("input", event => {
+  searchTerm = event.target.value.trim().toLowerCase();
+  applyFilters();
+});
+document.querySelectorAll("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach(item => item.classList.toggle("active", item === button));
+    applyFilters();
+  });
+});
+document.querySelectorAll(".departments [data-category]").forEach(link => {
+  link.addEventListener("click", () => {
+    activeFilter = link.dataset.category;
+    document.querySelectorAll("[data-filter]").forEach(item => item.classList.toggle("active", item.dataset.filter === activeFilter));
+    applyFilters();
+  });
+});
+renderCart();
 </script>
-<!-- === FIM DO CABEÇALHO === -->
-
-<div id="product">
-
-<div class="galeria">
-<img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/61a55a0bebdf6d71d55ea6f15efdf07c.jpg" alt="iPhone 15 Azul - Foto 1" aria-label="Foto 1 do iPhone 15 azul">
-<img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/7d460f4644c7ef6b3893cc0fd7aac79e.jpg" alt="iPhone 15 Azul - Foto 2" aria-label="Foto 2 do iPhone 15 azul">
-<img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/d4d92d9dcc11aecb56dc337a309e1cfe.jpg" alt="iPhone 15 Azul - Foto 3" aria-label="Foto 3 do iPhone 15 azul">
-<img src="https://a-static.mlcdn.com.br/420x420/apple-iphone-15-128gb-azul-61-48mp-ios-5g/magazineluiza/238034800/2e9d6105f41271eb4bfbb14d95cc0c00.jpg" alt="iPhone 15 Azul - Foto 4" aria-label="Foto 4 do iPhone 15 azul">
-</div>
-<p style="text-align:center; color:#888; font-size:12px;">👉 Arraste pro lado para ver mais fotos</p>
-
-<div class="conteudo">
-<h1 style="font-size:20px; line-height:1.3;">Apple iPhone 15 128GB Azul 6,1" 48MP iOS 5G</h1>
-<p style="font-size:13px; color:#666; margin:5px 0;">Código: 238034800 | Com Nota Fiscal</p>
-
-<p class="preco-antigo">De R$ 6.499,00</p>
-<p class="preco">R$ 4.299,00 no Pix</p>
-<p style="font-size:14px;">ou 12x de R$ 399,90 sem juros</p>
-
-<a href="pagamento.html" style="text-decoration:none;" aria-label="Ir para pagamento">
-<button class="botao-magalu">🛒 ADICIONAR À SACOLA</button>
-</a>
-
-<a href="https://wa.me/5549912345678?text=Quero%20o%20iPhone%2015%20Azul%20128GB" target="_blank" style="text-decoration:none;" aria-label="Comprar pelo WhatsApp">
-<button class="botao-whats">💬 COMPRAR NO WHATSAPP COM DESCONTO</button>
-</a>
-
-<div class="lista">
-<b>Informações do Produto:</b><br>
-✅ iPhone 15 128GB Azul - Novo e Lacrado<br>
-✅ Tela Super Retina XDR 6,1"<br>
-✅ Câmera 48MP + 12MP<br>
-✅ Chip A16 Bionic<br>
-✅ iOS 17<br>
-✅ Garantia 12 meses + Nota Fiscal<br>
-✅ Entrega para todo o Brasil<br><br>
-
-</div>
-
-</div>
-</div>
-
-<div style="background:#0086ff; color:white; text-align:center; padding:20px; margin-top:20px; font-size:13px;">
-Magazine Luiza - Entrega rápida e segura
-</div>
-
 </body>
 </html>
-
