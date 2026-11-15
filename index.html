@@ -492,7 +492,11 @@ document.addEventListener("keydown", event => {
 document.getElementById("openCart").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
-document.getElementById("checkoutBtn").addEventListener("click", () => showToast("pagamento.html"));
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+    localStorage.setItem("carrinhoDados", JSON.stringify(cart));
+    location.href = "pagamento.html";
+});
+
 document.getElementById("searchForm").addEventListener("submit", event => {
   event.preventDefault();
   searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
