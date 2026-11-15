@@ -92,6 +92,38 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(max-width:850px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.header-main{grid-template-columns:1fr auto;gap:12px}.search{grid-column:1/-1;grid-row:2}.brand{font-size:23px}.hero{min-height:180px}.hero-mark{font-size:75px}}
 @media(max-width:480px){.top-strip{font-size:11px}.header-main{padding:11px 12px}.header-actions{gap:10px}.header-actions .account-label{display:none}.departments nav{gap:18px;padding:10px 13px}main{padding:0 11px;margin-top:12px}.hero{padding:24px 20px;min-height:165px}.hero p{font-size:13px}.hero-mark{font-size:58px}.section-head h2{font-size:19px}.section-head p{font-size:11px}.product-grid{gap:9px}.product-card{padding:10px}.product-image{height:145px}.product-card h3{font-size:12px;min-height:48px}.price{font-size:19px}.add-btn{font-size:12px;padding:9px 5px}.favorite{width:34px}.info-band{grid-template-columns:1fr;gap:8px}.info-item{padding:12px}}
+
+/* Galeria e detalhes do produto */
+.product-card{cursor:pointer}
+.product-card button{cursor:pointer}
+.gallery-backdrop{position:fixed;inset:0;background:#101828c9;z-index:70;display:none;align-items:center;justify-content:center;padding:18px;overflow:auto}
+.gallery-backdrop.open{display:flex}
+.gallery-modal{background:#fff;width:min(980px,100%);max-height:94vh;overflow:auto;border-radius:16px;position:relative;box-shadow:0 20px 70px #0005}
+.gallery-close{position:absolute;right:14px;top:12px;z-index:2;border:0;border-radius:50%;width:38px;height:38px;background:#f0f2f5;font-size:24px}
+.gallery-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:26px;padding:28px}
+.gallery-visual{min-width:0}
+.gallery-main{height:390px;background:#f8f9fb;border:1px solid #eee;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.gallery-main img{max-width:100%;max-height:100%;object-fit:contain}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);border:0;border-radius:50%;width:38px;height:38px;background:#fff;box-shadow:0 2px 10px #0002;font-size:22px}
+.gallery-arrow.prev{left:10px}.gallery-arrow.next{right:10px}
+.gallery-thumbs{display:flex;gap:9px;overflow:auto;padding:12px 2px}
+.gallery-thumb{flex:0 0 68px;height:68px;border:2px solid #ddd;border-radius:8px;background:#fff;padding:4px}
+.gallery-thumb.active{border-color:var(--blue)}
+.gallery-thumb img{width:100%;height:100%;object-fit:contain}
+.gallery-info{padding:10px 4px}
+.gallery-info h2{font-size:23px;line-height:1.25;margin:5px 0 10px}
+.gallery-info .gallery-price{font-size:29px;color:var(--blue);font-weight:800;margin:12px 0 2px}
+.gallery-info .gallery-old{color:#888;text-decoration:line-through;font-size:13px}
+.gallery-description{color:#666;font-size:13px;margin:12px 0}
+.gallery-add{background:var(--blue);color:#fff;border:0;border-radius:8px;padding:13px 18px;width:100%;font-weight:bold;margin:14px 0}
+.gallery-reviews{border-top:1px solid #eee;margin-top:12px;padding-top:15px}
+.gallery-reviews h3{font-size:17px;margin-bottom:7px}
+.gallery-review-summary{display:flex;align-items:center;gap:9px;margin:8px 0;color:#777;font-size:13px}
+.gallery-stars{color:#e6a400;letter-spacing:2px;font-size:18px}
+.gallery-no-reviews{background:#f7f8fa;border-radius:8px;padding:12px;color:#666;font-size:13px}
+.gallery-counter{position:absolute;bottom:10px;right:12px;background:#222b;color:#fff;border-radius:20px;padding:4px 9px;font-size:12px}
+@media(max-width:700px){.gallery-backdrop{padding:8px;align-items:flex-start}.gallery-modal{max-height:none;margin:8px 0}.gallery-layout{grid-template-columns:1fr;gap:10px;padding:16px}.gallery-main{height:300px}.gallery-info h2{font-size:20px}.gallery-close{right:9px;top:9px}}
+
 </style>
 </head>
 <body>
@@ -182,6 +214,37 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
   <small>Projeto independente de demonstração, sem vínculo ou afiliação com Magazine Luiza / Magalu. Os produtos e preços desta vitrine são demonstrativos e não representam oferta oficial. Disponibilidade, entrega e condições devem ser confirmadas antes de qualquer compra.</small>
 </footer>
 
+
+<div class="gallery-backdrop" id="galleryBackdrop" role="dialog" aria-modal="true" aria-label="Detalhes do produto">
+  <section class="gallery-modal">
+    <button class="gallery-close" id="galleryClose" type="button" aria-label="Fechar">×</button>
+    <div class="gallery-layout">
+      <div class="gallery-visual">
+        <div class="gallery-main">
+          <img id="galleryMainImage" src="" alt="">
+          <button class="gallery-arrow prev" id="galleryPrev" type="button" aria-label="Foto anterior">‹</button>
+          <button class="gallery-arrow next" id="galleryNext" type="button" aria-label="Próxima foto">›</button>
+          <span class="gallery-counter" id="galleryCounter">1 / 1</span>
+        </div>
+        <div class="gallery-thumbs" id="galleryThumbs"></div>
+      </div>
+      <div class="gallery-info">
+        <span class="tag" id="galleryBadge"></span>
+        <h2 id="galleryTitle"></h2>
+        <div class="gallery-review-summary"><span class="gallery-stars">☆☆☆☆☆</span><span id="galleryRatingText">Ainda sem avaliações</span></div>
+        <div class="gallery-old" id="galleryOldPrice"></div>
+        <div class="gallery-price" id="galleryPrice"></div>
+        <p class="gallery-description">Produto demonstrativo. Consulte disponibilidade, características, garantia e condições antes de comprar.</p>
+        <button class="gallery-add" id="galleryAdd" type="button">Adicionar à sacola</button>
+        <div class="gallery-reviews">
+          <h3>Avaliações de clientes</h3>
+          <div class="gallery-no-reviews" id="galleryReviews">Ainda não há avaliações verificadas para este produto. Os comentários serão exibidos aqui quando houver avaliações reais de clientes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 <div class="drawer-backdrop" id="drawerBackdrop"></div>
 <aside class="drawer" id="cartDrawer" aria-label="Sua sacola" aria-hidden="true">
   <div class="drawer-head"><h2>Minha sacola</h2><button class="close-btn" id="closeCart" type="button" aria-label="Fechar sacola">×</button></div>
@@ -255,10 +318,53 @@ function renderProducts() {
 let cart = {};
 let activeFilter = "Todos";
 let searchTerm = "";
+let galleryProductId = null;
+let galleryImages = [];
+let galleryIndex = 0;
 
 const money = value => value.toLocaleString("pt-BR", {style:"currency",currency:"BRL"});
 const cartDrawer = document.getElementById("cartDrawer");
 const backdrop = document.getElementById("drawerBackdrop");
+
+
+function renderGalleryImage() {
+  const image = galleryImages[galleryIndex];
+  const main = document.getElementById("galleryMainImage");
+  main.src = image;
+  main.alt = products[galleryProductId].name + " - foto " + (galleryIndex + 1);
+  document.getElementById("galleryCounter").textContent = (galleryIndex + 1) + " / " + galleryImages.length;
+  document.getElementById("galleryPrev").style.display = galleryImages.length > 1 ? "" : "none";
+  document.getElementById("galleryNext").style.display = galleryImages.length > 1 ? "" : "none";
+  document.getElementById("galleryThumbs").innerHTML = galleryImages.map((src,index) =>
+    '<button class="gallery-thumb ' + (index === galleryIndex ? 'active' : '') + '" type="button" data-gallery-index="' + index + '" aria-label="Ver foto ' + (index + 1) + '"><img src="' + src + '" alt=""></button>'
+  ).join("");
+}
+function openGallery(id) {
+  const p = products[id];
+  if (!p) return;
+  galleryProductId = id;
+  galleryImages = Array.isArray(p.images) && p.images.length ? p.images : [p.image];
+  galleryIndex = 0;
+  document.getElementById("galleryBadge").textContent = p.badge;
+  document.getElementById("galleryTitle").textContent = p.name;
+  document.getElementById("galleryOldPrice").textContent = "De " + money(p.oldPrice);
+  document.getElementById("galleryPrice").textContent = money(p.price);
+  document.getElementById("galleryRatingText").textContent = "Ainda sem avaliações";
+  document.getElementById("galleryReviews").textContent = "Ainda não há avaliações verificadas para este produto. Os comentários serão exibidos aqui quando houver avaliações reais de clientes.";
+  document.getElementById("galleryBackdrop").classList.add("open");
+  document.body.style.overflow = "hidden";
+  renderGalleryImage();
+}
+function closeGallery() {
+  document.getElementById("galleryBackdrop").classList.remove("open");
+  document.body.style.overflow = "";
+  galleryProductId = null;
+}
+function moveGallery(step) {
+  if (!galleryImages.length) return;
+  galleryIndex = (galleryIndex + step + galleryImages.length) % galleryImages.length;
+  renderGalleryImage();
+}
 
 function showToast(message) {
   const toast = document.getElementById("toast");
@@ -319,9 +425,11 @@ function applyFilters() {
   document.getElementById("resultCount").textContent = visible + (visible === 1 ? " produto" : " produtos");
 }
 document.getElementById("productGrid").addEventListener("click", event => {
+  const card = event.target.closest(".product-card");
   const add = event.target.closest("[data-add]");
   const favorite = event.target.closest("[data-favorite]");
-  if (add) addToCart(add.dataset.add);
+  if (add) { addToCart(add.dataset.add); return; }
+  if (card && !event.target.closest("button")) { openGallery(card.dataset.id); return; }
   if (favorite) {
     favorite.classList.toggle("active");
     favorite.textContent = favorite.classList.contains("active") ? "♥" : "♡";
@@ -336,6 +444,27 @@ document.getElementById("cartItems").addEventListener("click", event => {
   if (minus) changeQuantity(minus.dataset.minus, -1);
   if (remove) { delete cart[remove.dataset.remove]; renderCart(); }
 });
+
+document.getElementById("galleryClose").addEventListener("click", closeGallery);
+document.getElementById("galleryBackdrop").addEventListener("click", event => {
+  if (event.target.id === "galleryBackdrop") closeGallery();
+});
+document.getElementById("galleryPrev").addEventListener("click", () => moveGallery(-1));
+document.getElementById("galleryNext").addEventListener("click", () => moveGallery(1));
+document.getElementById("galleryThumbs").addEventListener("click", event => {
+  const thumb = event.target.closest("[data-gallery-index]");
+  if (thumb) { galleryIndex = Number(thumb.dataset.galleryIndex); renderGalleryImage(); }
+});
+document.getElementById("galleryAdd").addEventListener("click", () => {
+  if (galleryProductId) addToCart(galleryProductId);
+});
+document.addEventListener("keydown", event => {
+  if (!document.getElementById("galleryBackdrop").classList.contains("open")) return;
+  if (event.key === "Escape") closeGallery();
+  if (event.key === "ArrowLeft") moveGallery(-1);
+  if (event.key === "ArrowRight") moveGallery(1);
+});
+
 document.getElementById("openCart").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
