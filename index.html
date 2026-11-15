@@ -116,6 +116,8 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
     <a href="#produtos" data-category="Informática">Informática</a>
     <a href="#produtos" data-category="TV e vídeo">TV e vídeo</a>
     <a href="#produtos" data-category="Eletrodomésticos">Eletrodomésticos</a>
+    <a href="#produtos" data-category="Games">Games</a>
+    <a href="#produtos" data-category="Móveis">Móveis</a>
     <a href="#produtos" data-category="Ofertas">Ofertas</a>
   </nav>
 </div>
@@ -142,6 +144,8 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
       <button class="filter-btn" data-filter="Eletrodomésticos">Eletrodomésticos</button>
       <button class="filter-btn" data-filter="Casa">Casa</button>
       <button class="filter-btn" data-filter="Áudio">Áudio</button>
+      <button class="filter-btn" data-filter="Games">Games</button>
+      <button class="filter-btn" data-filter="Móveis">Móveis</button>
       <button class="filter-btn" data-filter="Ofertas">Ofertas</button>
     </div>
     <div class="product-grid" id="productGrid"></div>
@@ -186,7 +190,20 @@ const products = {
   geladeira: {id:"geladeira",name:"Geladeira Frost Free Duplex  duas portas",category:"Eletrodomésticos",price:2899,oldPrice:3399,badge:"Destaque",image:"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=600&q=80"},
   foneBluetooth: {id:"foneBluetooth",name:"Fone de ouvido Bluetooth sem fio",category:"Áudio",price:149,oldPrice:219,badge:"Oferta",image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80"},
   smartwatch: {id:"smartwatch",name:"Smartwatch com monitoramento e Bluetooth",category:"Casa",price:229,oldPrice:329,badge:"Novidade",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"},
-  cafeteira: {id:"cafeteira",name:"Cafeteira elétrica para café coado",category:"Casa",price:139,oldPrice:189,badge:"Oferta",image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"}
+  cafeteira: {id:"cafeteira",name:"Cafeteira elétrica para café coado",category:"Casa",price:139,oldPrice:189,badge:"Oferta",image:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80"},
+  tabletSamsung: {id:"tabletSamsung",name:"Tablet Android 10 polegadas 128GB",category:"Celulares",price:899,oldPrice:1199,badge:"Oferta",image:"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?auto=format&fit=crop&w=600&q=80"},
+  motoG: {id:"motoG",name:"Smartphone Motorola Moto G 5G 256GB",category:"Celulares",price:1299,oldPrice:1599,badge:"Novidade",image:"https://images.unsplash.com/photo-1598327105666-5b89351aff97?auto=format&fit=crop&w=600&q=80"},
+  monitor: {id:"monitor",name:"Monitor LED 24 polegadas Full HD",category:"Informática",price:699,oldPrice:899,badge:"Oferta",image:"https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80"},
+  teclado: {id:"teclado",name:"Teclado mecânico para computador",category:"Informática",price:189,oldPrice:259,badge:"Destaque",image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"},
+  videogame: {id:"videogame",name:"Console de videogame geração atual",category:"Games",price:3499,oldPrice:3999,badge:"Destaque",image:"https://images.unsplash.com/photo-1486401899868-0e435ed85128?auto=format&fit=crop&w=600&q=80"},
+  controle: {id:"controle",name:"Controle sem fio para videogame",category:"Games",price:349,oldPrice:429,badge:"Oferta",image:"https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80"},
+  soundbar: {id:"soundbar",name:"Soundbar Bluetooth com subwoofer",category:"Áudio",price:599,oldPrice:799,badge:"Oferta",image:"https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=600&q=80"},
+  microondas: {id:"microondas",name:"Forno micro-ondas  semanais 30 litros",category:"Eletrodomésticos",price:649,oldPrice:799,badge:"Oferta",image:"https://images.unsplash.com/photo-1585659722983-3a675dabf23d?auto=format&fit=crop&w=600&q=80"},
+  lavadora: {id:"lavadora",name:"Máquina de lavar roupas 12kg",category:"Eletrodomésticos",price:1899,oldPrice:2299,badge:"Destaque",image:"https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=600&q=80"},
+  liquidificador: {id:"liquidificador",name:"Liquidificador 1000W jarra grande",category:"Casa",price:159,oldPrice:219,badge:"Oferta",image:"https://images.unsplash.com/photo-1570222094114-d054a817e56b?auto=format&fit=crop&w=600&q=80"},
+  aspirador: {id:"aspirador",name:"Aspirador de pó vertical sem fio",category:"Casa",price:429,oldPrice:579,badge:"Novidade",image:"https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&w=600&q=80"},
+  sofa: {id:"sofa",name:"Sofá de 3 lugares para sala",category:"Móveis",price:1799,oldPrice:2199,badge:"Destaque",image:"https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"},
+  cadeira: {id:"cadeira",name:"Cadeira ergonômica para escritório",category:"Móveis",price:799,oldPrice:999,badge:"Oferta",image:"https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=600&q=80"}
 };
 function renderProducts() {
   const grid = document.getElementById("productGrid");
