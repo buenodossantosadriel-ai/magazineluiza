@@ -492,9 +492,9 @@ document.addEventListener("keydown", event => {
 document.getElementById("openCart").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
-// LINHA CORRIGIDA AQUI
+// NOVO CORRIGIDO (guarda ID + quantidade)
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-    const cartArray = Object.values(cart);
+    const cartArray = Object.entries(cart).map(([produtoId, qtd])=>({id:produtoId, qty:qtd}));
     localStorage.setItem("carrinhoDados", JSON.stringify(cartArray));
     location.href = "pagamento.html";
 });
