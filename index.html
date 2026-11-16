@@ -492,11 +492,40 @@ document.addEventListener("keydown", event => {
 document.getElementById("openCart").addEventListener("click", openCart);
 document.getElementById("closeCart").addEventListener("click", closeCart);
 backdrop.addEventListener("click", closeCart);
-// NOVO CORRIGIDO (guarda ID + quantidade)
+// CHECKOUT: envia um retrato completo e atualizado do carrinho para pagamento.html
 document.getElementById("checkoutBtn").addEventListener("click", () => {
-    const cartArray = Object.entries(cart).map(([produtoId, qtd])=>({id:produtoId, qty:qtd}));
-    localStorage.setItem("carrinhoDados", JSON.stringify(cartArray));
+  const items = Object.entries(cart).map(([id, qty]) => {
+    const p = products[id];
+    if (!p || !Number.isInteger(qty) || qty < 1) return null;
+    return {
+      id: p.id,
+      name: p.name,
+      image: p.image,
+      unitPrice: Number(p.price),
+      qty,
+      subtotal: Number(p.price) * qty
+    };
+  }).filter(Boolean);
+
+  if (!items.length) {
+    showToast("Adicione pelo menos um produto à sacola.");
+    return;
+  }
+
+  const total = items.reduce((sum, item) => sum + item.subtotal, 0);
+  const checkoutData = {
+    version: 2,
+    updatedAt: new Date().toISOString(),
+    items,
+    total
+  };
+
+  try {
+    localStorage.setItem("carrinhoDados", JSON.stringify(checkoutData));
     location.href = "pagamento.html";
+  } catch (error) {
+    showToast("Não foi possível preparar o checkout. Tente novamente.");
+  }
 });
 
 document.getElementById("searchForm").addEventListener("submit", event => {
