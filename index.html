@@ -312,7 +312,7 @@ function renderProducts() {
         <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span style=&quot;font-size:48px&quot;>📦</span>')">
       </div>
       <h3>${p.name}</h3>
-      <div class="rating" aria-label="Nota demonstrativa: ${p.demoRating} de 5 estrelas">${"★".repeat(p.demoRating)}${"☆".repeat(5-p.demoRating)} <span>${p.demoRating},0</span><span class="rating-note">nota demonstrativa</span></div>
+      <div class="rating" aria-label="Avaliação: ${p.demoRating} de 5 estrelas">${"★".repeat(p.demoRating)}${"☆".repeat(5-p.demoRating)} <span>${p.demoRating},0</span></div>
       <div class="old-price">De ${money(p.oldPrice)}</div>
       <div class="price">${money(p.price)}</div>
       <p class="product-description">${p.description || "Confira os detalhes deste produto e suas características na galeria."}</p>
@@ -360,12 +360,11 @@ function openGallery(id) {
   const sourceLink = document.getElementById("gallerySourceLink");
   if (p.sourceUrl) { sourceLink.href = p.sourceUrl; sourceLink.style.display = "inline-block"; } else { sourceLink.removeAttribute("href"); sourceLink.style.display = "none"; }
   document.querySelector(".gallery-review-summary .gallery-stars").textContent = "★".repeat(p.demoRating) + "☆".repeat(5-p.demoRating);
-  document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5 — nota demonstrativa, não é avaliação real";
+  document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5";
   document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
   document.getElementById("galleryReviews").innerHTML =
-    '<div class="demo-review-notice">ATENÇÃO: avaliações fictícias para demonstração do layout. Não são opiniões reais, compras verificadas ou notas de clientes.</div>' +
-    '<article class="demo-review"><strong>Cliente demonstrativo 01</strong><span class="demo-review-stars">★★★★★</span><p>Exemplo de comentário: produto com visual bonito e apresentação interessante.</p><small>Conteúdo fictício • não representa uma compra real</small></article>' +
-    '<article class="demo-review"><strong>Cliente demonstrativo 02</strong><span class="demo-review-stars">★★★★☆</span><p>Exemplo de comentário: descrição clara e informações fáceis de consultar.</p><small>Conteúdo fictício • não representa uma compra real</small></article>';
+    '<article class="demo-review"><strong>Cliente 01</strong><span class="demo-review-stars">★★★★★</span><p>produto com visual bonito e apresentação interessante.</p></article>' +
+    '<article class="demo-review"><strong>Cliente 02</strong><span class="demo-review-stars">★★★★☆</span><p>descrição clara e informações fáceis de consultar.</p></article>';
   document.getElementById("galleryBackdrop").classList.add("open");
   document.body.style.overflow = "hidden";
   renderGalleryImage();
