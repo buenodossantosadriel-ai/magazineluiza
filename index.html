@@ -119,6 +119,26 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 .gallery-thumb.active{border-color:var(--blue)}
 .gallery-thumb img{width:100%;height:100%;object-fit:contain}
 .gallery-info{padding:10px 4px}
+.card-seller{font-size:12px;color:#697078;margin:5px 0 9px}
+.gallery-seller{text-align:center;color:#697078;border-bottom:8px solid #f1f3f4;padding:13px 4px 17px;font-size:14px}
+.gallery-seller strong{color:#303840}
+.purchase-panel{padding:20px 4px;border-bottom:8px solid #f1f3f4}
+.pix-label{display:inline-block;background:#d9fbe9;color:#167342;font-weight:800;border-radius:7px;padding:6px 10px;font-size:13px;margin-top:6px}
+.gallery-info .gallery-price{font-size:34px;color:#20252a;font-weight:800;margin:5px 0}
+.installment-price{font-size:14px;color:#454c52}
+.pix-coupon{display:flex;gap:10px;align-items:center;background:#e0fff0;border-radius:10px;padding:12px;margin:15px 0;color:#176b42;font-size:13px;flex-wrap:wrap}
+.pix-coupon span{color:#52645b}
+.payment-options{border:0;background:transparent;color:#0075e8;font-weight:700;padding:8px 0;font-size:14px}
+.payment-options span{font-size:24px;vertical-align:middle;margin-left:8px}
+.shipping-panel{padding:18px 4px;border-bottom:8px solid #f1f3f4}
+.cep-row{background:#f0f3f5;border-radius:12px;padding:14px;display:flex;gap:10px;align-items:center;color:#505a62}
+.cep-label{display:block;color:#657078;font-size:12px;margin:10px 0 7px}
+.cep-input-row{display:flex;gap:8px}
+.cep-input-row input{min-width:0;flex:1;border:1px solid #cbd2d8;border-radius:8px;padding:12px;font-size:15px}
+.cep-input-row button{border:0;border-radius:8px;background:#0879e8;color:white;font-weight:700;padding:0 16px}
+.cep-feedback{font-size:12px;color:#667078;margin-top:12px;line-height:1.5}
+.gallery-add{background:#079f27;color:#fff;border:0;border-radius:12px;padding:16px 18px;width:100%;font-weight:bold;margin:16px 0 8px;font-size:16px}
+.gallery-buy{background:#fff;color:#079f27;border:1px solid #079f27;border-radius:12px;padding:15px 18px;width:100%;font-weight:bold;font-size:16px}
 .gallery-info h2{font-size:23px;line-height:1.25;margin:5px 0 10px}
 .gallery-info .gallery-price{font-size:29px;color:var(--blue);font-weight:800;margin:12px 0 2px}
 .gallery-info .gallery-old{color:#888;text-decoration:line-through;font-size:13px}
@@ -247,15 +267,25 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
       <div class="gallery-info">
         <span class="tag" id="galleryBadge"></span>
         <h2 id="galleryTitle"></h2>
-        <div class="gallery-review-summary"><span class="gallery-stars">☆☆☆☆☆</span><span id="galleryRatingText">Nota demonstrativa</span></div>
-        <div class="gallery-old" id="galleryOldPrice"></div>
-        <div class="gallery-price" id="galleryPrice"></div>
-        <p class="gallery-description" id="galleryDescription"></p><a id="gallerySourceLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none;color:#006bd6;font-weight:bold;text-decoration:underline;margin-top:8px">Ver referência no site da marca</a>
-        <button class="gallery-add" id="galleryAdd" type="button">Adicionar à sacola</button>
-        <div class="gallery-reviews">
-          <h3>Avaliações de clientes</h3>
-          <div class="gallery-no-reviews" id="galleryReviews">Ainda não há avaliações verificadas para este produto. Os comentários serão exibidos aqui quando houver avaliações reais de clientes.</div>
+        <div class="gallery-seller">Vendido e entregue por <strong>Loja parceira</strong></div>
+        <div class="purchase-panel">
+          <div class="gallery-old" id="galleryOldPrice"></div>
+          <span class="pix-label">10% OFF no Pix</span>
+          <div class="gallery-price" id="galleryPrice"></div>
+          <div class="installment-price" id="galleryInstallments"></div>
+          <div class="pix-coupon"><strong>✦ Oferta no Pix</strong><span>Desconto aplicado ao selecionar Pix no pagamento</span></div>
+          <button class="payment-options" type="button" id="paymentOptions">Ver opções de pagamento <span>›</span></button>
         </div>
+        <div class="shipping-panel">
+          <div class="cep-row"><span>📍</span><strong>Consulte entrega para sua região</strong></div>
+          <label class="cep-label" for="galleryCep">Informe seu CEP para consultar prazo e disponibilidade</label>
+          <div class="cep-input-row"><input id="galleryCep" inputmode="numeric" maxlength="9" placeholder="00000-000" aria-label="CEP"><button type="button" id="checkCep">Consultar</button></div>
+          <div id="cepFeedback" class="cep-feedback">🚚 Entrega e retirada: consulte as opções disponíveis para seu endereço.</div>
+        </div>
+        <p class="gallery-description" id="galleryDescription"></p>
+        <a id="gallerySourceLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none;color:#006bd6;font-weight:bold;text-decoration:underline;margin-top:8px">Ver referência no site da marca</a>
+        <button class="gallery-add" id="galleryAdd" type="button">♧　Adicionar à sacola</button>
+        <button class="gallery-buy" id="galleryBuyNow" type="button">Comprar agora</button>
       </div>
     </div>
   </section>
@@ -327,7 +357,7 @@ function renderProducts() {
         <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentHTML('beforeend','<span style=&quot;font-size:48px&quot;>📦</span>')">
       </div>
       <h3>${p.name}</h3>
-      <div class="rating" aria-label="Avaliação: ${p.demoRating} de 5 estrelas">${"★".repeat(p.demoRating)}${"☆".repeat(5-p.demoRating)} <span>${p.demoRating},0</span></div>
+      <div class="card-seller">Vendido por loja parceira</div>
       <div class="old-price">De ${money(p.oldPrice)}</div>
       <div class="price">${money(p.price)}</div>
       <p class="product-description">${p.description || "Confira os detalhes deste produto e suas características na galeria."}</p>
@@ -377,9 +407,6 @@ function openGallery(id) {
   document.querySelector(".gallery-review-summary .gallery-stars").textContent = "★".repeat(p.demoRating) + "☆".repeat(5-p.demoRating);
   document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5";
   document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
-  document.getElementById("galleryReviews").innerHTML =
-    '<article class="demo-review"><strong>Cliente 01</strong><span class="demo-review-stars">★★★★★</span><p>produto com visual bonito e apresentação interessante.</p></article>' +
-    '<article class="demo-review"><strong>Cliente 02</strong><span class="demo-review-stars">★★★★☆</span><p>descrição clara e informações fáceis de consultar.</p></article>';
   document.getElementById("galleryBackdrop").classList.add("open");
   document.body.style.overflow = "hidden";
   renderGalleryImage();
@@ -497,6 +524,28 @@ document.getElementById("galleryThumbs").addEventListener("click", event => {
 });
 document.getElementById("galleryAdd").addEventListener("click", () => {
   if (galleryProductId) addToCart(galleryProductId);
+});
+document.getElementById("galleryBuyNow").addEventListener("click", () => {
+  if (!galleryProductId) return;
+  addToCart(galleryProductId);
+  closeGallery();
+  openCart();
+});
+document.getElementById("checkCep").addEventListener("click", () => {
+  const cep = document.getElementById("galleryCep").value.replace(/\\D/g,"");
+  const feedback = document.getElementById("cepFeedback");
+  if (cep.length !== 8) {
+    feedback.textContent = "Informe um CEP válido com 8 números.";
+    return;
+  }
+  feedback.textContent = "CEP informado. O prazo e o valor do frete dependem da integração de consulta de entrega.";
+});
+document.getElementById("galleryCep").addEventListener("input", event => {
+  const digits = event.target.value.replace(/\\D/g,"").slice(0,8);
+  event.target.value = digits.length > 5 ? digits.slice(0,5) + "-" + digits.slice(5) : digits;
+});
+document.getElementById("paymentOptions").addEventListener("click", () => {
+  showToast("As condições finais aparecem na etapa de pagamento.");
 });
 document.addEventListener("keydown", event => {
   if (!document.getElementById("galleryBackdrop").classList.contains("open")) return;
