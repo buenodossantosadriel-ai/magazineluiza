@@ -533,7 +533,7 @@ document.getElementById("galleryBuyNow").addEventListener("click", () => {
   openCart();
 });
 document.getElementById("checkCep").addEventListener("click", () => {
-  const cep = document.getElementById("galleryCep").value.replace(/\\D/g,"");
+  const cep = document.getElementById("galleryCep").value.replace(/\D/g,"");
   const feedback = document.getElementById("cepFeedback");
   if (cep.length !== 8) {
     feedback.textContent = "Informe um CEP válido com 8 números.";
@@ -542,7 +542,7 @@ document.getElementById("checkCep").addEventListener("click", () => {
   feedback.textContent = "CEP informado. O prazo e o valor do frete dependem da integração de consulta de entrega.";
 });
 document.getElementById("galleryCep").addEventListener("input", event => {
-  const digits = event.target.value.replace(/\\D/g,"").slice(0,8);
+  const digits = event.target.value.replace(/\D/g,"").slice(0,8);
   event.target.value = digits.length > 5 ? digits.slice(0,5) + "-" + digits.slice(5) : digits;
 });
 document.getElementById("paymentOptions").addEventListener("click", () => {
