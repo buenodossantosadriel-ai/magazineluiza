@@ -35,13 +35,15 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
 .hero h1{font-size:clamp(25px,4vw,40px);line-height:1.08;margin:8px 0}
 .hero p{max-width:520px;font-size:15px}
 .welcome-card{background:#fff;border:1px solid #e4e8ee;border-radius:24px;padding:20px 30px 15px;margin:0 0 24px;box-shadow:0 2px 5px #00000012}
-.welcome-top{display:flex;align-items:center;gap:28px;min-height:112px;padding:0 30px 14px}
-.welcome-avatar{width:96px;height:96px;flex:0 0 96px;border-radius:50%;object-fit:cover;object-position:center;background:#0875e1}
-.welcome-copy h1{font-size:clamp(23px,3.5vw,36px);line-height:1.2;color:#080808;margin:0 0 10px;font-weight:800}
-.welcome-copy p{font-size:clamp(17px,2.7vw,27px);line-height:1.45;color:#111}
-.welcome-enter{display:block;width:100%;height:66px;border:0;border-radius:22px;background:#0875df;color:#fff;font-size:25px;font-weight:800;margin-top:8px;opacity:.65;cursor:not-allowed}
-.welcome-enter:disabled{pointer-events:none}
-@media(max-width:600px){.welcome-card{padding:13px 13px 12px;border-radius:20px;margin-bottom:20px}.welcome-top{gap:14px;min-height:92px;padding:0 3px 10px}.welcome-avatar{width:70px;height:70px;flex-basis:70px}.welcome-copy h1{font-size:22px;margin-bottom:6px}.welcome-copy p{font-size:16px;line-height:1.35}.desktop-break{display:none}.welcome-enter{height:56px;border-radius:17px;font-size:21px;margin-top:6px}}
+.welcome-carousel{position:relative;width:100%;height:186px;overflow:hidden;border-radius:16px;background:#eaf3ff}
+.welcome-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.welcome-slide.active{opacity:1}
+.welcome-slide img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.welcome-carousel-dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:7px;z-index:2}
+.welcome-carousel-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:#ffffffa6;box-shadow:0 1px 4px #0005;cursor:pointer}
+.welcome-carousel-dot.active{width:22px;border-radius:8px;background:#fff}
+@media(prefers-reduced-motion:reduce){.welcome-slide{transition:none}}
+@media(max-width:600px){.welcome-card{padding:13px 13px 12px;border-radius:20px;margin-bottom:20px}.welcome-carousel{height:154px;border-radius:14px}}
 .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:28px 2px 14px}
 .section-head h2{font-size:22px}
 .section-head p{font-size:13px;color:#fff}.section-head h2{color:#fff}#resultCount{display:none!important}
@@ -187,15 +189,19 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
   </nav>
 </div>
 <main>
-  <section class="welcome-card" aria-label="Acesso à conta">
-    <div class="welcome-top">
-      <img class="welcome-avatar" src="https://s2-valor.glbimg.com/LBCcDtXDgVkrSImWOTXjhURlU8Q%3D/0x0%3A658x509/984x0/smart/filters%3Astrip_icc%28%29/i.s3.glbimg.com/v1/AUTH_63b422c2caee4269b8b34177e8876b93/internal_photos/bs/2019/t/D/uuRAgnS0u0j4flRA2fGw/site-magazine-luiza-reprodu-o-facebook.png" alt="Lu, assistente virtual do Magalu">
-      <div class="welcome-copy">
-        <h1>Olá, vem ser feliz!</h1>
-        <p>Aproveite ofertas incríveis<br class="desktop-break"> recomendadas para você.</p>
+  <section class="welcome-card" aria-label="Ofertas em destaque">
+    <div class="welcome-carousel" id="welcomeCarousel" aria-label="Carrossel de ofertas">
+      <div class="welcome-slide active"><img src="https://topsortassets.com/asset_01m7bf79y8eqktzxvsyy7esbrk.png" alt="Oferta em destaque 1" fetchpriority="high"></div>
+      <div class="welcome-slide"><img src="https://images-hublp.luizalabs.com/media/agora_ou_nunca_black_das_blacks_2494dddcca.png" alt="Oferta em destaque 2" loading="lazy"></div>
+      <div class="welcome-slide"><img src="https://images-hublp.luizalabs.com/media/black_friday_banner_e64c71f1e8.png" alt="Oferta em destaque 3" loading="lazy"></div>
+      <div class="welcome-slide"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFAPqhOCr703XsDksBFD_nAkpYecUZm_O2hwbqpPaqxWnxgjV3rRwNrdlp&s=10" alt="Oferta em destaque 4" loading="lazy"></div>
+      <div class="welcome-carousel-dots" aria-label="Selecionar imagem">
+        <button class="welcome-carousel-dot active" type="button" aria-label="Mostrar imagem 1" aria-current="true"></button>
+        <button class="welcome-carousel-dot" type="button" aria-label="Mostrar imagem 2"></button>
+        <button class="welcome-carousel-dot" type="button" aria-label="Mostrar imagem 3"></button>
+        <button class="welcome-carousel-dot" type="button" aria-label="Mostrar imagem 4"></button>
       </div>
     </div>
-    <button class="welcome-enter" type="button" disabled aria-disabled="true">Entrar</button>
   </section>
 
   <section id="produtos">
@@ -570,6 +576,29 @@ document.querySelectorAll(".departments [data-category]").forEach(link => {
     applyFilters();
   });
 });
+const bannerSlides = [...document.querySelectorAll("#welcomeCarousel .welcome-slide")];
+const bannerDots = [...document.querySelectorAll("#welcomeCarousel .welcome-carousel-dot")];
+let currentBanner = 0;
+let bannerTimer;
+function showBanner(index) {
+  currentBanner = (index + bannerSlides.length) % bannerSlides.length;
+  bannerSlides.forEach((slide, i) => slide.classList.toggle("active", i === currentBanner));
+  bannerDots.forEach((dot, i) => {
+    dot.classList.toggle("active", i === currentBanner);
+    if (i === currentBanner) dot.setAttribute("aria-current", "true");
+    else dot.removeAttribute("aria-current");
+  });
+}
+function startBannerRotation() {
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(() => showBanner(currentBanner + 1), 5000);
+}
+bannerDots.forEach((dot, index) => dot.addEventListener("click", () => {
+  showBanner(index);
+  startBannerRotation();
+}));
+startBannerRotation();
+
 renderProducts();
 renderCart();
 </script>
