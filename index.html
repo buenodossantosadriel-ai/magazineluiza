@@ -359,7 +359,9 @@ function openGallery(id) {
   document.getElementById("galleryPrice").textContent = money(p.price);
   const sourceLink = document.getElementById("gallerySourceLink");
   if (p.sourceUrl) { sourceLink.href = p.sourceUrl; sourceLink.style.display = "inline-block"; } else { sourceLink.removeAttribute("href"); sourceLink.style.display = "none"; }
-  document.querySelector(".gallery-review-summary .gallery-stars").textContent = "★".repeat(p.demoRating) + "☆".repeat(5-p.demoRating);\n  document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5 — nota demonstrativa, não é avaliação real";\n  document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
+  document.querySelector(".gallery-review-summary .gallery-stars").textContent = "★".repeat(p.demoRating) + "☆".repeat(5-p.demoRating);
+  document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5 — nota demonstrativa, não é avaliação real";
+  document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
   document.getElementById("galleryReviews").innerHTML =
     '<div class="demo-review-notice">ATENÇÃO: avaliações fictícias para demonstração do layout. Não são opiniões reais, compras verificadas ou notas de clientes.</div>' +
     '<article class="demo-review"><strong>Cliente demonstrativo 01</strong><span class="demo-review-stars">★★★★★</span><p>Exemplo de comentário: produto com visual bonito e apresentação interessante.</p><small>Conteúdo fictício • não representa uma compra real</small></article>' +
