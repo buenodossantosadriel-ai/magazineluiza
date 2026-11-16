@@ -401,11 +401,12 @@ function openGallery(id) {
   document.getElementById("galleryBadge").textContent = p.badge;
   document.getElementById("galleryTitle").textContent = p.name;
   document.getElementById("galleryOldPrice").textContent = "De " + money(p.oldPrice);
-  document.getElementById("galleryPrice").textContent = money(p.price);
+  document.getElementById("galleryPrice").textContent = money(p.price * 0.9) + " no Pix";
+  document.getElementById("galleryInstallments").textContent = "ou " + money(p.price) + " em até 10x de " + money(p.price / 10) + " sem juros";
+  document.getElementById("galleryCep").value = "";
+  document.getElementById("cepFeedback").textContent = "🚚 Entrega e retirada: consulte as opções disponíveis para seu endereço.";
   const sourceLink = document.getElementById("gallerySourceLink");
   if (p.sourceUrl) { sourceLink.href = p.sourceUrl; sourceLink.style.display = "inline-block"; } else { sourceLink.removeAttribute("href"); sourceLink.style.display = "none"; }
-  document.querySelector(".gallery-review-summary .gallery-stars").textContent = "★".repeat(p.demoRating) + "☆".repeat(5-p.demoRating);
-  document.getElementById("galleryRatingText").textContent = p.demoRating + ",0 de 5";
   document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
   document.getElementById("galleryBackdrop").classList.add("open");
   document.body.style.overflow = "hidden";
