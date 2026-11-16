@@ -270,17 +270,7 @@ main{max-width:1200px;margin:20px auto;padding:0 16px}
         <div class="gallery-seller">Vendido e entregue por <strong>Loja parceira</strong></div>
         <div class="purchase-panel">
           <div class="gallery-old" id="galleryOldPrice"></div>
-          <span class="pix-label">10% OFF no Pix</span>
           <div class="gallery-price" id="galleryPrice"></div>
-          <div class="installment-price" id="galleryInstallments"></div>
-          <div class="pix-coupon"><strong>✦ Oferta no Pix</strong><span>Desconto aplicado ao selecionar Pix no pagamento</span></div>
-          <button class="payment-options" type="button" id="paymentOptions">Ver opções de pagamento <span>›</span></button>
-        </div>
-        <div class="shipping-panel">
-          <div class="cep-row"><span>📍</span><strong>Consulte entrega para sua região</strong></div>
-          <label class="cep-label" for="galleryCep">Informe seu CEP para consultar prazo e disponibilidade</label>
-          <div class="cep-input-row"><input id="galleryCep" inputmode="numeric" maxlength="9" placeholder="00000-000" aria-label="CEP"><button type="button" id="checkCep">Consultar</button></div>
-          <div id="cepFeedback" class="cep-feedback">🚚 Entrega e retirada: consulte as opções disponíveis para seu endereço.</div>
         </div>
         <p class="gallery-description" id="galleryDescription"></p>
         <a id="gallerySourceLink" href="#" target="_blank" rel="noopener noreferrer" style="display:none;color:#006bd6;font-weight:bold;text-decoration:underline;margin-top:8px">Ver referência no site da marca</a>
@@ -401,10 +391,7 @@ function openGallery(id) {
   document.getElementById("galleryBadge").textContent = p.badge;
   document.getElementById("galleryTitle").textContent = p.name;
   document.getElementById("galleryOldPrice").textContent = "De " + money(p.oldPrice);
-  document.getElementById("galleryPrice").textContent = money(p.price * 0.9) + " no Pix";
-  document.getElementById("galleryInstallments").textContent = "ou " + money(p.price) + " em até 10x de " + money(p.price / 10) + " sem juros";
-  document.getElementById("galleryCep").value = "";
-  document.getElementById("cepFeedback").textContent = "🚚 Entrega e retirada: consulte as opções disponíveis para seu endereço.";
+  document.getElementById("galleryPrice").textContent = money(p.price);
   const sourceLink = document.getElementById("gallerySourceLink");
   if (p.sourceUrl) { sourceLink.href = p.sourceUrl; sourceLink.style.display = "inline-block"; } else { sourceLink.removeAttribute("href"); sourceLink.style.display = "none"; }
   document.getElementById("galleryDescription").textContent = p.description || "Consulte as características e especificações deste produto.";
@@ -531,22 +518,6 @@ document.getElementById("galleryBuyNow").addEventListener("click", () => {
   addToCart(galleryProductId);
   closeGallery();
   openCart();
-});
-document.getElementById("checkCep").addEventListener("click", () => {
-  const cep = document.getElementById("galleryCep").value.replace(/\D/g,"");
-  const feedback = document.getElementById("cepFeedback");
-  if (cep.length !== 8) {
-    feedback.textContent = "Informe um CEP válido com 8 números.";
-    return;
-  }
-  feedback.textContent = "CEP informado. O prazo e o valor do frete dependem da integração de consulta de entrega.";
-});
-document.getElementById("galleryCep").addEventListener("input", event => {
-  const digits = event.target.value.replace(/\D/g,"").slice(0,8);
-  event.target.value = digits.length > 5 ? digits.slice(0,5) + "-" + digits.slice(5) : digits;
-});
-document.getElementById("paymentOptions").addEventListener("click", () => {
-  showToast("As condições finais aparecem na etapa de pagamento.");
 });
 document.addEventListener("keydown", event => {
   if (!document.getElementById("galleryBackdrop").classList.contains("open")) return;
